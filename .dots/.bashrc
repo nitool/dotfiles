@@ -15,6 +15,43 @@ generate_ps1() {
     export PS1=$(echo ${_branch}${_changes}${_pwd} ${_arrow}' ')
 }
 
+# $1 - recursive path, can be null
+generate_workspace_aliases() {
+    local _path="/home/${USER}/Workspace"
+
+    if ! [[ -z $1 ]]; then
+        _path=$1
+    fi
+
+    for entry in $(ls -lA ${_path} | tail -n +2 | awk '{print $NF}')
+    do
+        local _entry_path=$(echo ${_path}'/'${entry})
+
+        if [[ -d ${_entry_path} ]] && [[ -z $1 ]]; then
+            generate_workspace_aliases ${_entry_path}
+        else
+            local _alias=$(echo ${_entry_path} | sed -r 's/^.*?[/]([^/]+?)[/]([^/]+?)$/\1-\2/')
+            alias $(echo 'work-'${_alias,,})="cd ${_entry_path}"
+        fi
+    done
+}
+
+setup() {
+    local _workspace_path="/home/${USER}/Workspace"
+
+    generate_ps1
+
+    if ! [[ -d  ${_workspace_path} ]]; then
+        mkdir ${_workspace_path}
+    fi
+
+    if ! [[ -d ${_workspace_path}/priv ]]; then
+        mkdir ${_workspace_path}/priv
+    fi
+
+    generate_workspace_aliases
+}
+
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -41,4 +78,5 @@ alias grep='grep --color=auto'
 export EDITOR=vim
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 
-generate_ps1
+setup
+
