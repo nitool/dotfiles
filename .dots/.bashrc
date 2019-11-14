@@ -1,3 +1,35 @@
+#### HELPERS
+_exec_docker_completion() {
+    case $COMP_CWORD in
+        1)
+            if ! [[ -z $(docker-compose ps 2>&1) ]]; then
+                local _containers=$(docker-compose ps 2>&1 | tail -n +3 | awk '{print $1}')
+                _containers=$(printf -- '%s ' ${_containers})
+                COMPREPLY=($(compgen -W "${_containers}" -- "${COMP_WORDS[1]}"))
+            fi
+
+            ;;
+        2)
+            COMPREPLY=($(compgen -W "bash sh" "${COMP_WORDS[2]}"))
+            ;;
+    esac
+}
+
+# $1 - container name
+# $2 - program
+exec_docker() {
+    if [[ -z $(docker-compose ps 2>&1) ]]; then
+        return 1
+    fi
+
+    docker exec -it $1 $2
+}
+
+complete -F _exec_docker_completion exec_docker
+
+
+
+#### PS1
 current_branch() {
   git branch 2>&1 | awk '/^[*]/ { print "(" $2 ")" }'
 }
@@ -15,6 +47,9 @@ generate_ps1() {
     export PS1=$(echo ${_branch}${_changes}${_pwd} ${_arrow}' ')
 }
 
+
+
+#### setup
 # $1 - recursive path, can be null
 generate_workspace_aliases() {
     local _path="/home/${USER}/Workspace"
@@ -52,6 +87,8 @@ setup() {
     generate_workspace_aliases
 }
 
+
+
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -79,4 +116,3 @@ export EDITOR=vim
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 
 setup
-
