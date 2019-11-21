@@ -1,3 +1,10 @@
+#### helpers
+update() {
+    printf -- "\n\n> trying to execute: sudo apt-get upgrade -y ; sudo apt-get update -y \n\n"
+
+    sudo apt-get upgrade -y ; sudo apt-get update -y
+}
+
 #### PS1
 current_branch() {
   git branch 2>&1 | awk '/^[*]/ { print "(" $2 ")" }'
