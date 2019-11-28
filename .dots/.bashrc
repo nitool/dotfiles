@@ -5,6 +5,33 @@ update() {
     sudo apt-get upgrade -y ; sudo apt-get update -y
 }
 
+remove_containers() {
+    printf -- "\n\n> trying to remove containers \n\n"
+
+    docker container rm -f $(docker container ls -aq)
+}
+
+remove_volumes() {
+    printf -- "\n\n> trying to remove volumes \n\n"
+
+    docker volume rm $(docker volume ls -q)
+}
+
+cleanup_docker_heavy_stack() {
+    remove_containers
+    remove_volumes
+}
+
+#memoryuse() {
+#    ps aux | \
+#     tail -n +2 | \
+#      sort -rk 3 | \
+#       head -n 10 | \
+#        awk '{print $3 "%"; out=""; for(i=11;i<=NF;i++){out=out" "$i}; print out}' | \
+#         sed 'N;s/\n/ /'
+#}
+
+
 #### PS1
 current_branch() {
   git branch 2>&1 | awk '/^[*]/ { print "(" $2 ")" }'
@@ -22,8 +49,6 @@ generate_ps1() {
 
     export PS1=$(echo ${_branch}${_changes}${_pwd} ${_arrow}' ')
 }
-
-
 
 #### setup
 # $1 - recursive path, can be null
@@ -87,6 +112,8 @@ fi
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias gitpull="git fetch ; git pull"
+alias diskuse="df -ah | head -n 1 ; df -ah | tail -n +2 | sort -rhk 2 | head -n 10"
 
 export EDITOR=vim
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
