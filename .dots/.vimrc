@@ -2,6 +2,7 @@
 :set tabstop=4
 :set shiftwidth=4
 :set expandtab
+:set autoindent
 
 " infos
 :set number
@@ -16,4 +17,9 @@
 
 " clipboard
 :set clipboard=unnamed
+
+" wrapping
+:set textwidth=0
+:set wrapmargin=0
+:set wrap!
 
