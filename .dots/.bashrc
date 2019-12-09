@@ -119,3 +119,6 @@ export EDITOR=vim
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 
 setup
+
+[[ $TERM != "screen" ]] && exec tmux
+
