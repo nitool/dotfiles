@@ -16,4 +16,4 @@
 
 " copying
 set clipboard+=unnamed
-
+set ideajoin
