@@ -23,3 +23,5 @@
 :set wrapmargin=0
 :set wrap!
 
+" status line
+:set laststatus=2
