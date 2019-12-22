@@ -25,12 +25,3 @@
 
 " status line
 :set laststatus=2
-
-" very magic mode
-nnoremap / /\v
-vnoremap / /\v
-cnoremap %s/ %smagic/
-cnoremap \>s/ \>smagic/
-nnoremap :g/ :g/\v
-nnoremap :g// :g//
-
