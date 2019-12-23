@@ -89,6 +89,43 @@ setup() {
 }
 
 
+#### TMUX 
+dev_tmux() { 
+    tmux ls 
+    local _status=$?
+
+    if [[ ${_status} -ne 0 ]]; then
+        tmux new-session -d
+    else
+        tmux new-window
+    fi
+
+    tmux split-window -h
+    tmux split-window -v
+
+    if [[ ${_status} -ne 0 ]]; then
+        tmux -2 attach-session -d
+    fi
+}
+
+pivot_tmux() { 
+    tmux ls 
+    local _status=$?
+
+    if [[ ${_status} -ne 0 ]]; then
+        tmux new-session -d
+    else
+        tmux new-window
+    fi
+
+    seq 3 | xargs -I{} tmux split-window -v
+    tmux select-layout even-vertical
+
+    if [[ ${_status} -ne 0 ]]; then
+        tmux -2 attach-session -d
+    fi
+}
+
 
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
@@ -114,6 +151,7 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias gitpull="git fetch ; git pull"
 alias diskuse="df -ah | head -n 1 ; df -ah | tail -n +2 | sort -rhk 2 | head -n 10"
+alias rcreload="source ~/.bashrc"
 
 export EDITOR=vim
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
