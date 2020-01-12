@@ -25,3 +25,8 @@
 
 " status line
 :set laststatus=2
+
+" syntax
+syntax on
+filetype plugin on
+
