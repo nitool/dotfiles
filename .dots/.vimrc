@@ -35,3 +35,10 @@ filetype plugin on
 " requires running vim in root directory
 " @todo: update so it always create 'tags' file in root directory
 :silent !ctags -R -f ./.git/tags .
+
+call plug#begin('~/.vim/plugged')
+    Plug 'dracula/vim', { 'as': 'dracula' }
+call plug#end()
+
+colorscheme dracula
+
