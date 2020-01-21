@@ -7,6 +7,7 @@
 " infos
 :set number
 :set ruler
+:set rnu
 
 " search options
 :set hlsearch " highlight search result
@@ -34,7 +35,7 @@ filetype plugin on
 " requires ctags
 " requires running vim in root directory
 " @todo: update so it always create 'tags' file in root directory
-:silent !ctags -R -f ./.git/tags .
+" :silent !ctags -R -f ./.git/tags .
 
 call plug#begin('~/.vim/plugged')
     Plug 'dracula/vim', { 'as': 'dracula' }
