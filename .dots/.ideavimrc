@@ -17,3 +17,6 @@
 " copying
 set clipboard+=unnamed
 set ideajoin
+
+" relative line numbers
+set rnu
