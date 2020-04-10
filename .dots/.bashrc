@@ -22,16 +22,6 @@ cleanup_docker_heavy_stack() {
     remove_volumes
 }
 
-#memoryuse() {
-#    ps aux | \
-#     tail -n +2 | \
-#      sort -rk 3 | \
-#       head -n 10 | \
-#        awk '{print $3 "%"; out=""; for(i=11;i<=NF;i++){out=out" "$i}; print out}' | \
-#         sed 'N;s/\n/ /'
-#}
-
-
 #### PS1
 current_branch() {
   git branch 2>&1 | awk '/^[*]/ { print "(" $2 ")" }'
