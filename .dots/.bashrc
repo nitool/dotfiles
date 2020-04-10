@@ -43,8 +43,8 @@ count_changed_files() {
 
 generate_ps1() {
     local _branch='\[\033[01;94m\]$(current_branch | sed "s/^//" | sed "s/$/ /" )\[\033[0m\]'
-    local _changes='\[\033[01;90m\]$(count_changed_files | sed "s/$/ changes /")\[\033[0m\]'
-    local _pwd='\[\033[01;35m\]\w\[\033[0m\]'
+    local _changes='\[\033[01;93m\]$(count_changed_files | sed "s/$/ changes /")\[\033[0m\]'
+    local _pwd='\[\033[01;37m\]\w\[\033[0m\]'
     local _arrow='\[\033[01;91m\]~>\[\033[0m\]'
 
     export PS1=$(echo ${_branch}${_changes}${_pwd} ${_arrow}' ')
