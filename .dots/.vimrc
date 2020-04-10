@@ -39,7 +39,12 @@ filetype plugin on
 
 call plug#begin('~/.vim/plugged')
     Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'NLKNguyen/papercolor-theme'
+    Plug 'pangloss/vim-javascript'
 call plug#end()
 
-colorscheme dracula
+set t_Co=256   " This is may or may not needed.
+
+set background=light
+colorscheme PaperColor
 
