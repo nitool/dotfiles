@@ -17,7 +17,7 @@
 :set wrapscan " never ending story - jump to first search result after reaching last
 
 " clipboard
-:set clipboard=unnamed
+:set clipboard=unnamedplus
 
 " wrapping
 :set textwidth=0
@@ -35,7 +35,8 @@ filetype plugin on
 " requires ctags
 " requires running vim in root directory
 " @todo: update so it always create 'tags' file in root directory
-" :silent !ctags -R -f ./.git/tags .
+" :silent !ctags -R -f ./.git/tags 
+:set tags^=.git/tags;~
 
 call plug#begin('~/.vim/plugged')
     Plug 'dracula/vim', { 'as': 'dracula' }
