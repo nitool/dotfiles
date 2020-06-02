@@ -8,6 +8,13 @@
 :set number
 :set ruler
 :set rnu
+:set noerrorbells
+
+" swapfiles
+:set noswapfile
+:set nobackup
+:set undodir=~/.vim/undodir
+:set undofile
 
 " search options
 :set hlsearch " highlight search result
@@ -39,8 +46,9 @@ filetype plugin on
 :set tags^=.git/tags;~
 
 call plug#begin('~/.vim/plugged')
-    Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'morhetz/gruvbox'
 call plug#end()
 
-colorscheme dracula
+colorscheme gruvbox
+:set bg=dark
 
