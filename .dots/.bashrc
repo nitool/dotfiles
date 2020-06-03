@@ -17,6 +17,12 @@ remove_volumes() {
     docker volume rm $(docker volume ls -q)
 }
 
+stop_containers() {
+    printf -- "\n\n> trying to stop containers \n\n"
+
+    docker container stop $(docker container ls -aq)
+}
+
 cleanup_docker_heavy_stack() {
     remove_containers
     remove_volumes
