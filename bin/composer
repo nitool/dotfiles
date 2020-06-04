@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker container run \
+    --user 1001 \
+    -it --rm -v /home/$USER:/home/$USER \
+    -w $(pwd) composer composer ${*:1}
+

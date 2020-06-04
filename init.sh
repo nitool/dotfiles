@@ -1,8 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-ls -lA .dots/ | awk '{ print $NF }' | xargs -I{} ln -fs $(pwd)/.dots/{} /home/$USER/{} ;
+ls -lA .dots/ | awk '{ print $NF }' | xargs -I{} ln -fs $(pwd)/.dots/{} /home/$USER/{}
+mkdir -p /home/$USER/.config/nvim
+ln -fs $(pwd)/.dots/.vimrc /home/$USER/.config/nvim/init.vim
 test ! -L /home/$USER/.git-template && ln -fs $(pwd)/.git-template /home/$USER/.git-template
-
 dconf load /org/cinnamon/desktop/keybindings/ < dconf-settings.conf
-mkdir ~/.vim/undodir -p
+mkdir /home/$USER/.vim/undodir -p
+source /home/$USER/.bashrc
 

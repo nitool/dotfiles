@@ -1,0 +1,8 @@
+#!/bin/bash
+
+docker container run \
+    -it --rm \
+    -v /home/$USER:/home/$USER \
+    -v /usr/local/bin/phpactor:/usr/local/bin/phpactor \
+    -w $(pwd) php:7.4 php ${*:1}
+
