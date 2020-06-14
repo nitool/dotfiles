@@ -1,8 +1,9 @@
 #!/bin/bash
 
 docker container run \
-    -it --rm \
-    -v /home/$USER:/home/$USER \
+    -i --rm \
+    -v /home/$USER:/home/snitool \
     -v /usr/local/bin/phpactor:/usr/local/bin/phpactor \
-    -w $(pwd) php:7.4 php ${*:1}
+    -u snitool \
+    -w $(pwd) local_php74 php "$@"
 
