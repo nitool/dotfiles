@@ -1,12 +1,16 @@
 #!/bin/bash
 
-NAME='local_composer'
+name='local_php74'
 
-docker container start $NAME &>/dev/null || docker container run \
-    --user 1001 \
-    -d -i -v /home/$USER:/home/$USER \
-    --name $NAME \
-    local_composer tail -f /dev/null &>/dev/null
+docker container start $name &>/dev/null || docker container run \
+    -v /home/$USER:/home/$USER \
+    -v /usr/local/bin/phpactor:/usr/local/bin/phpactor \
+    -d -u $USER \
+    --name $name \
+    local_php74 tail -f /dev/null &>/dev/null
 
-docker container exec -i -u $USER -w $(pwd) $NAME composer "$@"
+docker container exec \
+    -i \
+    -u $USER \
+    -w $(pwd) $name composer "$@"
 
