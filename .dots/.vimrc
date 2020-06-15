@@ -48,6 +48,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'ncm2/ncm2'
     Plug 'roxma/nvim-yarp'
     Plug 'phpactor/ncm2-phpactor'
+    Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
 
 colorscheme gruvbox
@@ -56,7 +57,13 @@ set bg=dark
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
+" mappings
 let mapleader=" "
+
+"" phps
 autocmd FileType php nnoremap <buffer> <leader>im :PhpactorImportMissingClass<CR>
-nnoremap <M-1> :vsplit<CR>:vertical resize 30<CR> :Explore<CR>
+
+"" global
+nnoremap <M-1> :Lexplore<CR>:vertical resize 50<CR>
+nnoremap <C-n> :CtrlP<CR>
 
