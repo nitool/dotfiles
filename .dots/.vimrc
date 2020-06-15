@@ -56,3 +56,7 @@ set bg=dark
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 
+let mapleader=" "
+autocmd FileType php nnoremap <buffer> <leader>im :PhpactorImportMissingClass<CR>
+nnoremap <M-1> :vsplit<CR>:vertical resize 30<CR> :Explore<CR>
+

@@ -1,6 +1,12 @@
 #!/bin/bash
 
-docker container run \
+NAME='local_composer'
+
+docker container start $NAME &>/dev/null || docker container run \
     --user 1001 \
-    -it --rm -v /home/$USER:/home/$USER \
-    -w $(pwd) local_composer composer "$@"
+    -d -i -v /home/$USER:/home/$USER \
+    --name $NAME \
+    local_composer tail -f /dev/null &>/dev/null
+
+docker container exec -i -u $USER -w $(pwd) $NAME composer "$@"
+
