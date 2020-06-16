@@ -49,6 +49,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'roxma/nvim-yarp'
     Plug 'phpactor/ncm2-phpactor'
     Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
 call plug#end()
 
 colorscheme gruvbox
@@ -60,10 +62,14 @@ set completeopt=noinsert,menuone,noselect
 " mappings
 let mapleader=" "
 
-"" phps
+"" php
 autocmd FileType php nnoremap <buffer> <leader>im :PhpactorImportMissingClass<CR>
+autocmd FileType php nnoremap <buffer> <F4> :PhpactorGotoDefinition<CR>
+autocmd FileType php nnoremap <buffer> <M-7> :PhpactorFindReferences<CR>
 
 "" global
 nnoremap <M-1> :Lexplore<CR>:vertical resize 50<CR>
+nnoremap <leader><C-f> :Ag<CR>
+nnoremap <leader><C-e> :History<CR>
 nnoremap <C-n> :CtrlP<CR>
 
