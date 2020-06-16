@@ -45,12 +45,13 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'morhetz/gruvbox'
     Plug 'StanAngeloff/php.vim'
     Plug 'phpactor/phpactor', {'for': 'php'}
-    Plug 'ncm2/ncm2'
-    Plug 'roxma/nvim-yarp'
-    Plug 'phpactor/ncm2-phpactor'
+    Plug 'ncm2/ncm2', {'for': 'php'}
+    Plug 'roxma/nvim-yarp', {'for': 'php'}
+    Plug 'phpactor/ncm2-phpactor', {'for': 'php'}
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 colorscheme gruvbox
