@@ -40,6 +40,7 @@ filetype plugin on
 
 " tags
 set tags^=.git/tags;~
+autocmd BufWritePost *.php,*.js,*.ts,*.json,*.css,*.scss,*.py :silent !test -d .git && ctags -a -R --tag-relative -f .git/tags . 2>&1 /dev/null &
 
 call plug#begin('~/.config/nvim/plugged')
     Plug 'morhetz/gruvbox'
