@@ -55,6 +55,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'tpope/vim-fugitive'
     Plug 'nelsyeung/twig.vim'
+    Plug 'MattesGroeger/vim-bookmarks'
 call plug#end()
 
 colorscheme gruvbox
