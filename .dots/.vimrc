@@ -30,6 +30,7 @@ set clipboard=unnamedplus
 set textwidth=0
 set wrapmargin=0
 set wrap!
+set nofoldenable
 
 " status line
 set laststatus=2
