@@ -56,7 +56,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'tpope/vim-fugitive'
     Plug 'nelsyeung/twig.vim'
-    Plug 'MattesGroeger/vim-bookmarks'
+    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets'
+    Plug 'ncm2/ncm2-ultisnips'
 call plug#end()
 
 colorscheme gruvbox
@@ -78,4 +80,10 @@ nnoremap <M-1> :Lexplore<CR>:vertical resize 50<CR>
 nnoremap <leader><C-f> :Ag<CR>
 nnoremap <leader><C-e> :History<CR>
 nnoremap <C-n> :CtrlP<CR>
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+let g:UltiSnipsEditSplit="vertical"
 
