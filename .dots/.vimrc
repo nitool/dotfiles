@@ -74,6 +74,7 @@ let mapleader=" "
 autocmd FileType php nnoremap <buffer> <leader>im :PhpactorImportMissingClass<CR>
 autocmd FileType php nnoremap <buffer> <F4> :PhpactorGotoDefinition<CR>
 autocmd FileType php nnoremap <buffer> <M-7> :PhpactorFindReferences<CR>
+autocmd FileType php nnoremap <buffer> <leader><F12> :PhpactorTransform<CR>
 
 "" global
 nnoremap <M-1> :Lexplore<CR>:vertical resize 50<CR>

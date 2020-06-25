@@ -1,8 +1,15 @@
 snippet fun
-	${1:public} function $2($3): ${4:bool}
-	{
-		return ${5:true};
-	}
+${1:public} function $2($3): ${4:bool}
+{
+	return ${5:true};
+}
+endsnippet
+
+snippet __con
+public function __construct($1)
+{
+	$2
+}
 endsnippet
 
 snippet /**
@@ -25,5 +32,25 @@ endsnippet
 
 snippet @v
 @var $1
+endsnippet
+
+snippet try
+try {
+	$1
+} catch ($2 $exception) {
+	$3
+}
+endsnippet
+
+snippet newclass
+<?php
+
+namespace $1;
+
+class $2
+{
+
+}
+
 endsnippet
 

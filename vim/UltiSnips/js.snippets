@@ -1,0 +1,10 @@
+snippet $.ajax
+$.ajax({
+	method: '$1',
+	url: '$2',
+}).done((response) => {
+	$3	
+}).fail((response) => {
+	$4	
+});
+endsnippet
