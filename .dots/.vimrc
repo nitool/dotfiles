@@ -76,8 +76,6 @@ autocmd FileType php nnoremap <buffer> <F4> :PhpactorGotoDefinition<CR>
 autocmd FileType php nnoremap <buffer> <M-7> :PhpactorFindReferences<CR>
 autocmd FileType php nnoremap <buffer> <leader><F12> :PhpactorTransform<CR>
 autocmd FileType php inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-autocmd FileType php inoremap <expr> <Tab> (pumvisible() ? "\<C-n>" : "\<Tab>")
-autocmd FileType php inoremap <expr> <S-Tab> (pumvisible() ? "\<C-p>" : "\<S-Tab>")
 
 "" global
 nnoremap <M-1> :Lexplore<CR>:vertical resize 50<CR>
@@ -85,7 +83,7 @@ nnoremap <leader><C-f> :Ag<CR>
 nnoremap <leader><C-e> :History<CR>
 nnoremap <C-n> :CtrlP<CR>
 
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 let g:UltiSnipsEditSplit="vertical"
