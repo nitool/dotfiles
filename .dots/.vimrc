@@ -77,6 +77,8 @@ autocmd FileType php nnoremap <buffer> <M-7> :PhpactorFindReferences<CR>
 autocmd FileType php nnoremap <buffer> <leader><F12> :PhpactorTransform<CR>
 autocmd FileType php nnoremap <buffer> <leader><CR> :PhpactorContextMenu<CR>
 autocmd FileType php inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+autocmd FileType php vnoremap <leader>m :norm i//<CR>
+autocmd FileType php vnoremap <leader>,m :norm xx<CR>
 
 "" global
 nnoremap <M-1> :Lexplore<CR>:vertical resize 50<CR>
