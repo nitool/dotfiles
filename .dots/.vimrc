@@ -75,13 +75,15 @@ autocmd FileType php nnoremap <buffer> <leader>im :PhpactorImportMissingClass<CR
 autocmd FileType php nnoremap <buffer> <F4> :PhpactorGotoDefinition<CR>
 autocmd FileType php nnoremap <buffer> <M-7> :PhpactorFindReferences<CR>
 autocmd FileType php nnoremap <buffer> <leader><F12> :PhpactorTransform<CR>
+autocmd FileType php nnoremap <buffer> <leader><CR> :PhpactorContextMenu<CR>
 autocmd FileType php inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
 "" global
 nnoremap <M-1> :Lexplore<CR>:vertical resize 50<CR>
-nnoremap <leader><C-f> :Ag<CR>
+nnoremap <leader>f :Ag<CR>
 nnoremap <leader><C-e> :History<CR>
 nnoremap <C-n> :CtrlP<CR>
+nnoremap <leader><F5> :e %<CR>
 
 let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
