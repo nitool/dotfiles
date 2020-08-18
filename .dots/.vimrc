@@ -34,6 +34,7 @@ set nofoldenable
 
 " status line
 set laststatus=2
+set redrawtime=10000
 
 " syntax
 syntax on
