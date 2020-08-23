@@ -51,7 +51,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'ncm2/ncm2', {'for': 'php'}
     Plug 'roxma/nvim-yarp', {'for': 'php'}
     Plug 'phpactor/ncm2-phpactor', {'for': 'php'}
-    Plug 'ctrlpvim/ctrlp.vim'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -81,11 +80,15 @@ autocmd FileType php inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<C
 autocmd FileType php vnoremap <leader>m :norm i//<CR>
 autocmd FileType php vnoremap <leader>,m :norm xx<CR>
 
+"" js/ts
+autocmd FileType javascript nnoremap <silent> <F4> :call CocActionAsync('jumpDefinition')<CR>
+autocmd FileType javascript nnoremap <M-7> :call CocActionAsync('jumpReferences')<CR>
+
 "" global
 nnoremap <M-1> :Lexplore<CR>:vertical resize 50<CR>
 nnoremap <leader>f :Ag<CR>
 nnoremap <leader><C-e> :History<CR>
-nnoremap <C-n> :CtrlP<CR>
+nnoremap <C-n> :GFiles<CR>
 nnoremap <leader><F5> :e %<CR>
 
 let g:UltiSnipsExpandTrigger="<Tab>"
