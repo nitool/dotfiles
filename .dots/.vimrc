@@ -79,6 +79,7 @@ autocmd FileType php nnoremap <buffer> <leader><CR> :PhpactorContextMenu<CR>
 autocmd FileType php inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 autocmd FileType php vnoremap <leader>m :norm i//<CR>
 autocmd FileType php vnoremap <leader>,m :norm xx<CR>
+autocmd FileType php set colorcolumn=120
 
 "" js/ts
 autocmd FileType javascript nnoremap <silent> <F4> :call CocActionAsync('jumpDefinition')<CR>
