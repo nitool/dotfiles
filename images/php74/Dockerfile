@@ -1,6 +1,7 @@
 FROM php:7.4
 
-RUN useradd -u 1001 -ms /bin/bash nitool
+RUN useradd -u 1000 -d /home/nitool -ms /bin/bash nitool
+RUN chown -R nitool /home/nitool
 RUN apt-get update && apt-get install -qq git ctags zip unzip libxml2-dev wget
 RUN docker-php-ext-install soap
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
@@ -8,4 +9,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php \
     && php -r "unlink('composer-setup.php');" \
     && cp composer.phar /usr/bin/composer
+
+USER nitool
 
