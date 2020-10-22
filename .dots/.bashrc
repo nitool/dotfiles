@@ -34,7 +34,10 @@ current_branch() {
 }
 
 count_changed_files() {
-  git status --porcelain 2>&1 | grep -v '^fatal' | wc -l | awk '/^[^0]/'
+  git status &> /dev/null
+  if [ $? -eq 0 ]; then 
+    git status --porcelain | wc -l | awk '/^[^0]/'
+  fi
 }
 
 generate_ps1() {
