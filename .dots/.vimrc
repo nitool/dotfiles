@@ -26,6 +26,16 @@ set wrapscan " never ending story - jump to first search result after reaching l
 " clipboard
 set clipboard=unnamedplus
 
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
+" according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
+
 " wrapping
 set textwidth=0
 set wrapmargin=0
@@ -59,6 +69,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
     Plug 'ncm2/ncm2-ultisnips'
+    Plug 'preservim/nerdtree'
 call plug#end()
 
 colorscheme gruvbox
@@ -69,6 +80,9 @@ set completeopt=noinsert,menuone,noselect
 
 " mappings
 let mapleader=" "
+
+" nerdtree windows size
+let g:NERDTreeWinSize=50
 
 "" php
 autocmd FileType php nnoremap <buffer> <leader>im :PhpactorImportMissingClass<CR>
@@ -86,7 +100,7 @@ autocmd FileType javascript nnoremap <silent> <F4> :call CocActionAsync('jumpDef
 autocmd FileType javascript nnoremap <M-7> :call CocActionAsync('jumpReferences')<CR>
 
 "" global
-nnoremap <M-1> :Lexplore<CR>:vertical resize 50<CR>
+nnoremap <M-1> :NERDTreeToggle<CR>
 nnoremap <leader>f :Ag<CR>
 nnoremap <leader><C-e> :History<CR>
 nnoremap <C-n> :GFiles<CR>
