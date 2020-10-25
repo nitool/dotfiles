@@ -9,6 +9,6 @@ docker container start $name &>/dev/null || docker container run \
     local_node tail -f /dev/null &>/dev/null
 
 docker container exec \
-    -it \
+    -i \
     -u $USER \
     -w $(pwd) $name node "$@"
