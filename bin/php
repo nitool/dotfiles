@@ -5,6 +5,8 @@ name='local_php74'
 docker container start $name &>/dev/null || docker container run \
     -v /home/$USER:/home/$USER \
     -v /usr/local/bin/phpactor:/usr/local/bin/phpactor \
+    -v /mnt/c/Users/snito:/mnt/c/Users/snito \
+    -v /mnt/wsl:/mnt/wsl \
     -d -u $USER \
     --name $name \
     local_php74 tail -f /dev/null &>/dev/null
