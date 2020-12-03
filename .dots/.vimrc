@@ -26,16 +26,6 @@ set wrapscan " never ending story - jump to first search result after reaching l
 " clipboard
 set clipboard=unnamedplus
 
-" WSL yank support
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path
-" according to your mount point
-if executable(s:clip)
-    augroup WSLYank
-        autocmd!
-        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-    augroup END
-endif
-
 " wrapping
 set textwidth=0
 set wrapmargin=0
@@ -49,65 +39,4 @@ set redrawtime=10000
 " syntax
 syntax on
 filetype plugin on
-
-" tags
-set tags^=.git/tags;~
-autocmd BufWritePost *.php,*.js,*.ts,*.json,*.css,*.scss,*.py :silent !test -d .git && ctags -a -R --tag-relative -f .git/tags . 2>&1 /dev/null &
-
-call plug#begin('~/.config/nvim/plugged')
-    Plug 'morhetz/gruvbox'
-    Plug 'StanAngeloff/php.vim'
-    Plug 'phpactor/phpactor', {'for': 'php'}
-    Plug 'ncm2/ncm2', {'for': 'php'}
-    Plug 'roxma/nvim-yarp', {'for': 'php'}
-    Plug 'phpactor/ncm2-phpactor', {'for': 'php'}
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'tpope/vim-fugitive'
-    Plug 'nelsyeung/twig.vim'
-    Plug 'SirVer/ultisnips'
-    Plug 'honza/vim-snippets'
-    Plug 'ncm2/ncm2-ultisnips'
-    Plug 'preservim/nerdtree'
-call plug#end()
-
-colorscheme gruvbox
-set bg=dark
-
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-
-" mappings
-let mapleader=" "
-
-" nerdtree windows size
-let g:NERDTreeWinSize=50
-
-"" php
-autocmd FileType php nnoremap <buffer> <leader>im :PhpactorImportMissingClass<CR>
-autocmd FileType php nnoremap <buffer> <F4> :PhpactorGotoDefinition<CR>
-autocmd FileType php nnoremap <buffer> <M-7> :PhpactorFindReferences<CR>
-autocmd FileType php nnoremap <buffer> <leader><F12> :PhpactorTransform<CR>
-autocmd FileType php nnoremap <buffer> <leader><CR> :PhpactorContextMenu<CR>
-autocmd FileType php inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-autocmd FileType php vnoremap <leader>m :norm i//<CR>
-autocmd FileType php vnoremap <leader>,m :norm xx<CR>
-autocmd FileType php set colorcolumn=120
-
-"" js/ts
-autocmd FileType javascript nnoremap <silent> <F4> :call CocActionAsync('jumpDefinition')<CR>
-autocmd FileType javascript nnoremap <M-7> :call CocActionAsync('jumpReferences')<CR>
-
-"" global
-nnoremap <M-1> :NERDTreeToggle<CR>
-nnoremap <leader>f :Ag<CR>
-nnoremap <leader><C-e> :History<CR>
-nnoremap <C-n> :GFiles<CR>
-nnoremap <leader><F5> :e %<CR>
-
-let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-let g:UltiSnipsEditSplit="vertical"
 

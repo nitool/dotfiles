@@ -1,3 +1,0 @@
-#!/bin/bash
-
-php ~/.config/nvim/plugged/phpactor/bin/phpactor "$@"

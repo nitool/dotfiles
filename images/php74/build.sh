@@ -1,7 +1,10 @@
+#!/bin/bash
+
+docker image build -t local_php74 -<<EOF
 FROM php:7.4
 
-RUN useradd -u 1000 -d /home/nitool -ms /bin/bash nitool
-RUN chown -R nitool /home/nitool
+RUN useradd -u ${UID} -d /home/${USER} -ms /bin/bash ${USER}
+RUN chown -R ${USER} /home/${USER}
 RUN apt-get update && apt-get install -qq git ctags zip unzip libxml2-dev wget
 RUN docker-php-ext-install soap
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
@@ -10,5 +13,5 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r "unlink('composer-setup.php');" \
     && cp composer.phar /usr/bin/composer
 
-USER nitool
-
+USER ${USER}
+EOF

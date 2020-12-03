@@ -87,45 +87,6 @@ setup() {
     generate_workspace_aliases
 }
 
-
-#### TMUX 
-dev_tmux() { 
-    tmux ls 
-    local _status=$?
-
-    if [[ ${_status} -ne 0 ]]; then
-        tmux new-session -d
-    else
-        tmux new-window
-    fi
-
-    tmux split-window -h
-    tmux split-window -v
-
-    if [[ ${_status} -ne 0 ]]; then
-        tmux -2 attach-session -d
-    fi
-}
-
-pivot_tmux() { 
-    tmux ls 
-    local _status=$?
-
-    if [[ ${_status} -ne 0 ]]; then
-        tmux new-session -d
-    else
-        tmux new-window
-    fi
-
-    seq 3 | xargs -I{} tmux split-window -v
-    tmux select-layout even-vertical
-
-    if [[ ${_status} -ne 0 ]]; then
-        tmux -2 attach-session -d
-    fi
-}
-
-
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
