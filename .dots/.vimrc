@@ -40,3 +40,5 @@ set redrawtime=10000
 syntax on
 filetype plugin on
 
+nnoremap <M-1> :Lexplore<CR>:vertical resize 50<CR>
+
