@@ -36,9 +36,17 @@ set nofoldenable
 set laststatus=2
 set redrawtime=10000
 
+" netrw
+let g:netrw_banner=0
+
 " syntax
 syntax on
 filetype plugin on
 
-nnoremap <M-1> :Lexplore<CR>:vertical resize 50<CR>
+" configs
+autocmd FileType php set colorcolumn=120
+autocmd FileType javascript set colorcolumn=80
+
+" maps
+nnoremap <C-l> :Lexplore<CR>:vertical resize 50<CR>
 
