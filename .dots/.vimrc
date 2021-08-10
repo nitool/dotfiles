@@ -46,6 +46,7 @@ filetype plugin on
 " configs
 autocmd FileType php set colorcolumn=120
 autocmd FileType javascript set colorcolumn=80
+autocmd BufRead,BufNewFile *.tsx set filetype=javascript
 
 " maps
 nnoremap <C-l> :Lexplore<CR>:vertical resize 50<CR>

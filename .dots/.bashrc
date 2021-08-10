@@ -107,15 +107,23 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# essentials
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-alias gitpull="git fetch ; git pull"
+alias vim=nvim
+
+# tools
 alias diskuse="df -ah | head -n 1 ; df -ah | tail -n +2 | sort -rhk 2 | head -n 10"
 alias rcreload="source ~/.bashrc"
-alias vim=nvim
+
+# git
+alias gfp="git fetch ; git pull"
+alias gadd="git add ."
+alias gcm="git commit -m"
 
 export EDITOR=vim
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/games:$HOME/.local/bin:$PATH
 
 setup
 
+. "$HOME/.cargo/env"
