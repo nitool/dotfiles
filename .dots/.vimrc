@@ -1,53 +1,41 @@
-" tabs config
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set autoindent
-
-" infos
+set smartindent
 set number
 set ruler
 set rnu
 set noerrorbells
-
-" swapfiles
 set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
 set undofile
-
-" search options
-set hlsearch " highlight search result
-set incsearch " jump to search result while typing
+set hlsearch
+set incsearch
 set ignorecase
-set smartcase " if search pattern contains uppercase letter then it's case sensitive
-set wrapscan " never ending story - jump to first search result after reaching last
-
-" clipboard
+set smartcase
+set wrapscan
 set clipboard=unnamedplus
-
-" wrapping
 set textwidth=0
 set wrapmargin=0
-set wrap!
-set nofoldenable
-
-" status line
+set nowrap
 set laststatus=2
 set redrawtime=10000
+set scrolloff=8
 
-" netrw
-let g:netrw_banner=0
-
-" syntax
 syntax on
 filetype plugin on
 
-" configs
-autocmd FileType php set colorcolumn=120
-autocmd FileType javascript set colorcolumn=80
-autocmd BufRead,BufNewFile *.tsx set filetype=javascript
+call plug#begin()
+    Plug 'morhetz/gruvbox'
+call plug#end()
 
-" maps
-nnoremap <C-l> :Lexplore<CR>:vertical resize 50<CR>
+augroup SNITOOL
+    autocmd FileType php set colorcolumn=120
+    autocmd FileType javascript set colorcolumn=80
+    autocmd BufRead,BufNewFile *.tsx set filetype=javascript
+augroup END
+
+colorscheme gruvbox
+let g:netrw_banner=0
 
