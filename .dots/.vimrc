@@ -28,7 +28,13 @@ filetype plugin on
 
 call plug#begin()
     Plug 'morhetz/gruvbox'
+
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
+
+colorscheme gruvbox
+let g:netrw_banner=0
 
 augroup SNITOOL
     autocmd FileType php set colorcolumn=120
@@ -36,6 +42,7 @@ augroup SNITOOL
     autocmd BufRead,BufNewFile *.tsx set filetype=javascript
 augroup END
 
-colorscheme gruvbox
-let g:netrw_banner=0
+let mapleader = " "
+nnoremap <leader>lg :lua require("telescope.builtin").grep_string()<CR>
+nnoremap <leader>ff :lua require("telescope.builtin").git_files()<CR>
 
