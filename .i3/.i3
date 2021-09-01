@@ -1,1 +1,0 @@
-/home/snitool/Workspace/priv/dotfiles/.i3
