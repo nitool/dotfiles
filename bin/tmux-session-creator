@@ -21,7 +21,6 @@ done < <(find ${init_path} -mindepth ${find_level} -maxdepth ${find_level} -type
 
 while [ true ]; do
 	clear
-	echo ${query}
 	if [ -n "${query}" ]; then
 		options=()
 		while IFS=  read -r -d $'\0'; do
@@ -39,10 +38,10 @@ while [ true ]; do
 		echo "${path}"
 	done
 
-    while IFS= read -r -s -n 1 key  
+    while IFS= read -p "${query}" -r -s -n 1 key  
     do
         case "$key" in
-            "q") 
+            $'\033') 
                 exit 0
                 ;;
             "") 
@@ -55,7 +54,7 @@ while [ true ]; do
                 
                 exit 0
                 ;;
-            'k') 
+            ',') 
                 echo 'up'
                 index=$((index-1))
                 if [ ${index} -lt 0 ]; then
@@ -66,7 +65,7 @@ while [ true ]; do
 
                 break
                 ;;
-            'j') 
+            '.') 
                 echo 'down'
                 index=$((index+1))
                 if [ ${index} -gt ${#options[@]} ]; then
