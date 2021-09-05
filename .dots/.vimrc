@@ -1,5 +1,5 @@
 set tabstop=4
-set shiftwidth=4
+set shiftwidth=4 
 set expandtab
 set smartindent
 set number
@@ -35,7 +35,7 @@ call plug#begin()
     Plug 'nvim-telescope/telescope.nvim'
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " CocInstall coc-json coc-tsserver @yaegassy/coc-intelephense
+    " CocInstall coc-json coc-tsserver coc-sh @yaegassy/coc-intelephense
 call plug#end()
 
 colorscheme gruvbox
@@ -62,4 +62,9 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gr <Plug>(coc-references)
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
