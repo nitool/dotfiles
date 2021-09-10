@@ -1,0 +1,53 @@
+!font
+urxvt.font: xft:JetBrains Mono:size=12
+! special
+urxvt.foreground: #c5c8c6
+urxvt.background: #1d1f21
+urxvt.cursorColor: #c5c8c6
+urxvt.transparent: true
+urxvt.shading: 30
+
+! black
+urxvt.color0: #1d1f21
+urxvt.color8: #969896
+
+! red
+urxvt.color1: #cc342b
+urxvt.color9: #cc342b
+
+! green
+urxvt.color2: #198844
+urxvt.color10: #198844
+
+! yellow
+urxvt.color3: #fba922
+urxvt.color11: #fba922
+
+! blue
+urxvt.color4: #3971ed
+urxvt.color12: #3971ed
+
+! magenta
+urxvt.color5: #a36ac7
+urxvt.color13: #a36ac7
+
+! cyan
+urxvt.color6: #3971ed
+urxvt.color14: #3971ed
+
+! white
+urxvt.color7: #c5c8c6
+urxvt.color15: #ffffff
+
+urxvt.scrollBar: false
+
+urxvt.keysym.C-F: tmux-session-creator
+
+urxvt.perl-ext-common: default,clipboard
+urxvt.clipboard.autocopy: true
+urxvt.keysym.C-Shift-c: perl:clipboard:copy
+urxvt.keysym.C-Shift-v: perl:clipboard:paste
+
+urxvt.iso14755: false
+urxvt.iso14755_52: false
+

@@ -8,4 +8,3 @@ mkdir -p /home/$USER/.config/nvim
 ln -fs $(pwd)/.dots/.vimrc /home/$USER/.config/nvim/init.vim
 mkdir /home/$USER/.vim/undodir -p
 source /home/$USER/.bashrc
-

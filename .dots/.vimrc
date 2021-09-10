@@ -15,7 +15,7 @@ set incsearch
 set ignorecase
 set smartcase
 set wrapscan
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 set textwidth=0
 set wrapmargin=0
 set nowrap

@@ -38,7 +38,7 @@ while [ true ]; do
 		echo "${path}"
 	done
 
-    while IFS= read -p "${query}" -r -s -n 1 key  
+    while IFS= read -p "${query}" -r -n 1 key  
     do
         case "$key" in
             $'\033') 

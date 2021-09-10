@@ -116,6 +116,7 @@ alias vim=nvim
 alias diskuse="df -ah | head -n 1 ; df -ah | tail -n +2 | sort -rhk 2 | head -n 10"
 alias rcreload="source ~/.bashrc"
 alias tmux-session-creator="tmux-session-creator /home/$USER/Workspace 2"
+alias relxrdb="xrdb -merge ~/.Xresources"
 
 # git
 alias gfp="git fetch ; git pull"
