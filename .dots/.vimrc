@@ -36,6 +36,9 @@ call plug#begin()
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " CocInstall coc-json coc-tsserver coc-sh @yaegassy/coc-intelephense
+
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'ThePrimeagen/harpoon'
 call plug#end()
 
 colorscheme gruvbox
@@ -50,6 +53,18 @@ augroup END
 let mapleader = " "
 nnoremap <leader>lg :lua require("telescope.builtin").grep_string()<CR>
 nnoremap <leader>ff :lua require("telescope.builtin").git_files()<CR>
+
+nnoremap <leader>ll :lua require("harpoon.ui").toggle_quick_menu()<CR>
+nnoremap <leader>g1 :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <leader>g2 :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <leader>g3 :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <leader>g4 :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap <leader>g5 :lua require("harpoon.ui").nav_file(5)<CR>
+nnoremap <leader>g6 :lua require("harpoon.ui").nav_file(6)<CR>
+nnoremap <leader>g7 :lua require("harpoon.ui").nav_file(7)<CR>
+nnoremap <leader>g8 :lua require("harpoon.ui").nav_file(8)<CR>
+nnoremap <leader>g9 :lua require("harpoon.ui").nav_file(9)<CR>
+nnoremap <leader>mf :lua require("harpoon.mark").add_file()<CR>
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -68,3 +83,12 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+lua <<EOF
+require("harpoon").setup({
+    global_settings = {
+        save_on_toggle = false,
+        save_on_change = true,
+        enter_on_sendcmd = false,
+    }
+})
+EOF
