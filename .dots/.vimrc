@@ -35,7 +35,7 @@ call plug#begin()
     Plug 'nvim-telescope/telescope.nvim'
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " CocInstall coc-json coc-tsserver coc-sh @yaegassy/coc-intelephense
+    " CocInstall coc-json coc-tsserver coc-sh @yaegassy/coc-intelephense coc-css
 
     Plug 'nvim-lua/popup.nvim'
     Plug 'ThePrimeagen/harpoon'
@@ -48,10 +48,11 @@ augroup SNITOOL
     autocmd FileType php set colorcolumn=120
     autocmd FileType javascript set colorcolumn=80
     autocmd BufRead,BufNewFile *.tsx set filetype=javascript
+    autocmd FileType scss setl iskeyword+=@-@
 augroup END
 
 let mapleader = " "
-nnoremap <leader>lg :lua require("telescope.builtin").grep_string()<CR>
+nnoremap <leader>lg :lua require("telescope.builtin").live_grep()<CR>
 nnoremap <leader>ff :lua require("telescope.builtin").git_files()<CR>
 
 nnoremap <leader>ll :lua require("harpoon.ui").toggle_quick_menu()<CR>
@@ -77,6 +78,19 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gr <Plug>(coc-references)
+
+nnoremap Y yg$
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 function! s:check_back_space() abort
   let col = col('.') - 1
