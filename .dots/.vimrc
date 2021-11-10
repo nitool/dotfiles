@@ -49,6 +49,7 @@ augroup SNITOOL
     autocmd FileType javascript set colorcolumn=80
     autocmd BufRead,BufNewFile *.tsx set filetype=javascript
     autocmd FileType scss setl iskeyword+=@-@
+    autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
 
 let mapleader = " "
