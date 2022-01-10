@@ -39,6 +39,8 @@ call plug#begin()
 
     Plug 'nvim-lua/popup.nvim'
     Plug 'ThePrimeagen/harpoon'
+
+    Plug 'mtth/scratch.vim'
 call plug#end()
 
 colorscheme gruvbox
@@ -51,6 +53,11 @@ augroup SNITOOL
     autocmd FileType scss setl iskeyword+=@-@
     autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup END
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 let mapleader = " "
 nnoremap <leader>lg :lua require("telescope.builtin").live_grep()<CR>
@@ -93,10 +100,7 @@ inoremap ? ?<c-g>u
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+nmap <silent> <leader>ms :Scratch<CR>
 
 lua <<EOF
 require("harpoon").setup({
