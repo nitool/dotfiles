@@ -30,12 +30,13 @@ filetype plugin on
 
 call plug#begin()
     Plug 'morhetz/gruvbox'
+    Plug 'altercation/vim-colors-solarized'
 
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " CocInstall coc-json coc-tsserver coc-sh @yaegassy/coc-intelephense coc-css
+    " CocInstall coc-json coc-sh coc-css coc-tabnine
 
     Plug 'nvim-lua/popup.nvim'
     Plug 'ThePrimeagen/harpoon'
@@ -43,7 +44,8 @@ call plug#begin()
     Plug 'mtth/scratch.vim'
 call plug#end()
 
-colorscheme gruvbox
+set background=light
+colorscheme solarized
 let g:netrw_banner=0
 
 augroup SNITOOL
