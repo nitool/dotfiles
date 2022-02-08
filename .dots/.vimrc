@@ -30,7 +30,6 @@ filetype plugin on
 
 call plug#begin()
     Plug 'morhetz/gruvbox'
-    Plug 'altercation/vim-colors-solarized'
 
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
@@ -45,7 +44,7 @@ call plug#begin()
 call plug#end()
 
 set background=light
-colorscheme solarized
+colorscheme gruvbox
 let g:netrw_banner=0
 
 augroup SNITOOL
