@@ -1,5 +1,3 @@
 [user]
 	email = snitool@wp.pl
 	name = Sebastian Niecikowski
-[init]
-	templateDir = ~/.git-template

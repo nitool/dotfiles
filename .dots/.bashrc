@@ -5,29 +5,6 @@ update() {
     sudo apt-get upgrade -y ; sudo apt-get update -y
 }
 
-remove_containers() {
-    printf -- "\n\n> trying to remove containers \n\n"
-
-    docker container rm -f $(docker container ls -aq)
-}
-
-remove_volumes() {
-    printf -- "\n\n> trying to remove volumes \n\n"
-
-    docker volume rm $(docker volume ls -q)
-}
-
-stop_containers() {
-    printf -- "\n\n> trying to stop containers \n\n"
-
-    docker container stop $(docker container ls -aq)
-}
-
-cleanup_docker_heavy_stack() {
-    remove_containers
-    remove_volumes
-}
-
 #### PS1
 current_branch() {
   git branch 2>&1 | awk '/^[*]/ { print "(" $2 ")" }'

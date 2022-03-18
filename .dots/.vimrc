@@ -35,7 +35,7 @@ call plug#begin()
     Plug 'nvim-telescope/telescope.nvim'
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " CocInstall coc-json coc-sh coc-css coc-tabnine
+    " CocInstall coc-json coc-sh coc-css coc-python coc-rls
 
     Plug 'nvim-lua/popup.nvim'
     Plug 'ThePrimeagen/harpoon'
@@ -43,7 +43,7 @@ call plug#begin()
     Plug 'mtth/scratch.vim'
 call plug#end()
 
-set background=light
+set background=dark
 colorscheme gruvbox
 let g:netrw_banner=0
 
@@ -109,6 +109,27 @@ require("harpoon").setup({
         save_on_toggle = false,
         save_on_change = true,
         enter_on_sendcmd = false,
+    }
+})
+
+require("telescope").setup({
+    pickers = {
+        git_files = {
+            theme = "dropdown"
+        },
+        find_files = {
+            theme = "dropdown"
+        },
+        live_grep = {
+            theme = "dropdown"
+        }
+    },
+    defaults = {
+        file_ignore_patterns = {
+            "node_modules",
+            "vendor/.*",
+            ".git/.*"
+        }
     }
 })
 EOF
