@@ -1,0 +1,9 @@
+#!/bin/bash
+
+monitors=$(xrandr --listactivemonitors | tail -n+2 | awk '{ print $NF }')
+
+for monitor in $monitors
+do
+    xrandr --output ${monitor} --pos 0x0
+done
+

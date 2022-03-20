@@ -1,5 +1,5 @@
 !font
-urxvt.font: xft:JetBrains Mono:size=10
+urxvt.font: xft:JetBrains Mono:size=11
 ! special
 urxvt.foreground: #c5c8c6
 urxvt.background: #1d1f21
