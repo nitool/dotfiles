@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if xrandr --listactivemonitors | grep "DisplayPort-"; then
+    screen-layout-home
+
+    exit 0
+fi
+
 monitors=$(xrandr --listactivemonitors | tail -n+2 | awk '{ print $NF }')
 
 for monitor in $monitors
