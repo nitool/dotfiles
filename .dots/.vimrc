@@ -35,7 +35,7 @@ call plug#begin()
     Plug 'nvim-telescope/telescope.nvim'
 
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " CocInstall coc-json coc-sh coc-css coc-python coc-rls
+    " CocInstall coc-json coc-sh coc-css coc-python coc-rls coc-phpls
 
     Plug 'nvim-lua/popup.nvim'
     Plug 'ThePrimeagen/harpoon'
