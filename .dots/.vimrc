@@ -99,8 +99,6 @@ inoremap ? ?<c-g>u
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-nmap <silent> <leader>ms :Scratch<CR>
-
 set completeopt=menu,menuone,noselect
 
 lua <<EOF
