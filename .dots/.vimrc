@@ -37,6 +37,7 @@ call plug#begin()
     " sudo npm install intelephense -g
     " sudo npm i -g bash-language-server
     " sudo ln -s ~/.local/share/nvim/plugged/phpactor/bin/phpactor /usr/local/bin/phpactor
+    " sudo npm i -g typescript typescript-language-server
     Plug 'neovim/nvim-lspconfig'
 
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -147,13 +148,13 @@ require("harpoon").setup({
 require("telescope").setup({
     pickers = {
         git_files = {
-            theme = "dropdown"
+            theme = "ivy"
         },
         find_files = {
             theme = "dropdown"
         },
         live_grep = {
-            theme = "dropdown"
+            theme = "ivy"
         }
     },
     defaults = {
@@ -198,7 +199,8 @@ local servers = {
     'cssls',
     'html',
     'bashls',
-    'phpactor'
+    'phpactor',
+    'tsserver'
 }
 
 for _, lsp in pairs(servers) do
