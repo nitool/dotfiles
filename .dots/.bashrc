@@ -64,7 +64,7 @@ alias gadd="git add ."
 alias gcm="git commit -m"
 alias gss="git status -s"
 
-export EDITOR=vim
+export EDITOR=nvim
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/games:$HOME/.local/bin:$PATH
 
 generate_ps1

@@ -1,5 +1,0 @@
-{
-    "diagnostic.virtualText": true,
-    "diagnostic.messageTarget": "echo",
-    "diagnostic.checkCurrentLine": false
-}

@@ -41,6 +41,11 @@ call plug#begin()
     " sudo npm i -g typescript typescript-language-server
     Plug 'neovim/nvim-lspconfig'
 
+    " :TSInstall php
+    " :TSInstall rust
+    " :TSInstall javascript
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
@@ -105,6 +110,15 @@ vnoremap K :m '<-2<CR>gv=gv
 set completeopt=menu,menuone,noselect
 
 lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "rust", "javascript", "php" },
+  sync_install = false,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+
 local cmp = require("cmp")
 
 cmp.setup({
@@ -215,3 +229,4 @@ for _, lsp in pairs(servers) do
   }
 end
 EOF
+
