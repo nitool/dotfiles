@@ -59,6 +59,8 @@ call plug#begin()
 
     Plug 'nvim-lua/popup.nvim'
     Plug 'ThePrimeagen/harpoon'
+
+    Plug 'tpope/vim-fugitive'
 call plug#end()
 
 set background=dark
