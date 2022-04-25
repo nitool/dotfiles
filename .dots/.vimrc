@@ -109,9 +109,34 @@ inoremap ? ?<c-g>u
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+let g:currentmode={
+       \ 'n'  : 'NORMAL ',
+       \ 'v'  : 'VISUAL ',
+       \ 'V'  : 'V·Line ',
+       \ "\<C-V>" : 'V·Block ',
+       \ 'i'  : 'INSERT ',
+       \ 'R'  : 'R ',
+       \ 'Rv' : 'V·Replace ',
+       \ 'c'  : 'Command ',
+       \}
+
 set completeopt=menu,menuone,noselect
 
 lua <<EOF
+local treesitter_statusline = require'nvim-treesitter'.statusline {
+    indicator_size = 100
+}
+
+print(treesitter_statusline)
+
+vim.o.statusline = ""
+vim.o.statusline = vim.o.statusline .. " %{toupper(g:currentmode[mode()])}"
+vim.o.statusline = vim.o.statusline .. " %F"
+vim.o.statusline = vim.o.statusline .. " %{FugitiveStatusline()}"
+if treesitter_statusline ~= nil then
+    vim.o.statusline = vim.o.statusline .. " sadasd " .. treesitter_statusline
+end
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "rust", "javascript", "php" },
   sync_install = false,
