@@ -1,15 +1,56 @@
 #!/bin/bash
 
-if xrandr --listactivemonitors | grep "DisplayPort-"; then
-    screen-layout-home
+export DISPLAY=:0
 
-    exit 0
-fi
+onConnection() {
+    echo onConnection
+    for output in $(xrandr -q | grep " connected" | awk '{print $1}')
+    do
+        xrandr --output ${output} --off
+    done
 
-monitors=$(xrandr --listactivemonitors | tail -n+2 | awk '{ print $NF }')
+    local device=$(xrandr -q | grep " connected" | awk '{print $1}' | tail -n 1)
+    if [[ ${device} != 'eDP' ]]; then
+        xrandr --output ${device} --primary --mode 2560x1440
+    else
+        xrandr --output ${device} --primary --auto
+    fi
+}
 
-for monitor in $monitors
-do
-    xrandr --output ${monitor} --pos 0x0
+onDisconnection() {
+    echo onDisconnection
+    onConnection
+}
+
+statefile="`mktemp`"
+
+quit() {
+    rm "$statefile"
+    exit 1
+}
+
+trap quit SIGINT SIGTERM
+
+getstate() {
+    state="`xrandr -q | wc -l`"
+}
+
+savestate() {
+    echo "$state" > "$statefile"
+}
+
+getstate
+savestate
+
+xev -root -event randr | grep --line-buffered XRROutputChangeNotifyEvent | \
+while IFS= read -r line; do
+    getstate
+    old="`cat "$statefile"`"
+    if [ "$state" -gt "$old" ]; then
+        onConnection
+    elif [ "$state" -lt "$old" ]; then
+        onDisconnection
+    fi
+    savestate
 done
 
