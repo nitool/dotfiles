@@ -4,6 +4,7 @@ exec_always --no-startup-id feh -z --bg-scale ~/Obrazy/backgrounds
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id xset s noblank
+exec --no-startup-id single-monitor-mode &
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id notify-send "Volume increased" && pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
