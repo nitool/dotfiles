@@ -20,7 +20,7 @@ set $right semicolon
 
 floating_modifier $mod
 
-bindsym $mod+Return exec --no-startup-id urxvt
+bindsym $mod+Return exec --no-startup-id kitty
 
 bindsym $mod+Shift+q kill
 

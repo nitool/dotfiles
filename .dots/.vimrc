@@ -30,7 +30,6 @@ filetype plugin on
 
 call plug#begin()
     Plug 'morhetz/gruvbox'
-    Plug 'xiyaowong/nvim-transparent'
 
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
@@ -66,7 +65,6 @@ call plug#end()
 set background=dark
 colorscheme gruvbox
 let g:netrw_banner=0
-let g:transparent_enabled = v:true
 
 augroup SNITOOL
     autocmd FileType php set colorcolumn=120
