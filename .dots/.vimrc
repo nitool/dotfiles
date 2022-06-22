@@ -24,6 +24,7 @@ set redrawtime=10000
 set scrolloff=8
 set updatetime=300
 set shortmess+=c
+set cursorline
 
 syntax on
 filetype plugin on
