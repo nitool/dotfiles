@@ -32,7 +32,7 @@ return require("packer").startup(function()
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
 
-    use { 'phpactor/phpactor', tag = '*', run= 'composer install --no-dev -o'}
+    use { 'phpactor/phpactor', tag = '*', run = 'composer install --no-dev -o'}
 
     use 'nvim-lua/popup.nvim'
     use 'ThePrimeagen/harpoon'
