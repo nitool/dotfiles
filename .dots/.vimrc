@@ -79,35 +79,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let mapleader = " "
-nnoremap <leader>lg :lua require("telescope.builtin").live_grep()<CR>
-nnoremap <leader>ff :lua require("telescope.builtin").git_files()<CR>
-
-nnoremap <leader>ll :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap <leader>g1 :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <leader>g2 :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <leader>g3 :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <leader>g4 :lua require("harpoon.ui").nav_file(4)<CR>
-nnoremap <leader>g5 :lua require("harpoon.ui").nav_file(5)<CR>
-nnoremap <leader>g6 :lua require("harpoon.ui").nav_file(6)<CR>
-nnoremap <leader>g7 :lua require("harpoon.ui").nav_file(7)<CR>
-nnoremap <leader>g8 :lua require("harpoon.ui").nav_file(8)<CR>
-nnoremap <leader>g9 :lua require("harpoon.ui").nav_file(9)<CR>
-nnoremap <leader>mf :lua require("harpoon.mark").add_file()<CR>
-
-nnoremap Y yg$
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap J mzJ`z
-
-inoremap , ,<c-g>u
-inoremap . .<c-g>u
-inoremap ! !<c-g>u
-inoremap ? ?<c-g>u
-
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
 let g:currentmode={
        \ 'n'  : 'NORMAL ',
        \ 'v'  : 'VISUAL ',
@@ -122,6 +93,53 @@ let g:currentmode={
 set completeopt=menu,menuone,noselect
 
 lua <<EOF
+function map(mode, shortcut, command)
+  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+end
+
+function nmap(shortcut, command)
+  map('n', shortcut, command)
+end
+
+function imap(shortcut, command)
+  map('i', shortcut, command)
+end
+
+function vmap(shortcut, command)
+  map('v', shortcut, command)
+end
+
+
+vim.g.mapleader = ' '
+nmap('<leader>lg', ':lua require("telescope.builtin").live_grep()<CR>')
+nmap('<leader>ff', ':lua require("telescope.builtin").git_files()<CR>')
+
+nmap('<leader>ll', ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
+nmap('<leader>g1', ':lua require("harpoon.ui").nav_file(1)<CR>')
+nmap('<leader>g2', ':lua require("harpoon.ui").nav_file(2)<CR>')
+nmap('<leader>g3', ':lua require("harpoon.ui").nav_file(3)<CR>')
+nmap('<leader>g4', ':lua require("harpoon.ui").nav_file(4)<CR>')
+nmap('<leader>g5', ':lua require("harpoon.ui").nav_file(5)<CR>')
+nmap('<leader>g6', ':lua require("harpoon.ui").nav_file(6)<CR>')
+nmap('<leader>g7', ':lua require("harpoon.ui").nav_file(7)<CR>')
+nmap('<leader>g8', ':lua require("harpoon.ui").nav_file(8)<CR>')
+nmap('<leader>g9', ':lua require("harpoon.ui").nav_file(9)<CR>')
+nmap('<leader>mf', ':lua require("harpoon.mark").add_file()<CR>')
+
+nmap('Y', 'yg$')
+nmap('n', 'nzzzv')
+nmap('N', 'Nzzzv')
+nmap('J', 'mzJ`z')
+
+imap(',', ',<c-g>u')
+imap('.', '.<c-g>u')
+imap('!', '!<c-g>u')
+imap('?', '?<c-g>u')
+
+vmap('J', ':m \'>+1<CR>gv=gv')
+vmap('K', ':m \'<-2<CR>gv=gv')
+
+
 local treesitter_statusline = require'nvim-treesitter'.statusline {
     indicator_size = 100
 }
