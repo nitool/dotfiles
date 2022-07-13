@@ -14,6 +14,7 @@ echo "- i3"
 ln -fTs $(pwd)/.i3 /home/$USER/.i3
 echo "- nvim"
 ln -fs $(pwd)/.dots/.vimrc /home/$USER/.config/nvim/init.vim
+ln -fs $(pwd)/nvim-lua /home/$USER/.config/nvim/lua
 #ln -fs $(pwd)/init.lua /home/$USER/.config/nvim/init.lua
 echo "- kitty"
 ln -fs $(pwd)/kitty.conf /home/$USER/.config/kitty/kitty.conf

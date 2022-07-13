@@ -1,72 +1,3 @@
-set tabstop=4
-set shiftwidth=4 
-set expandtab
-set smartindent
-set number
-set ruler
-set rnu
-set noerrorbells
-set noswapfile
-set nobackup
-set undodir=~/.vim/undodir
-set undofile
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-set wrapscan
-set clipboard+=unnamedplus
-set textwidth=0
-set wrapmargin=0
-set nowrap
-set laststatus=2
-set redrawtime=10000
-set scrolloff=8
-set updatetime=300
-set shortmess+=c
-set cursorline
-
-syntax on
-filetype plugin on
-
-call plug#begin()
-    Plug 'morhetz/gruvbox'
-
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-
-    " sudo npm install intelephense -g
-    " sudo npm i -g bash-language-server
-    " sudo ln -s ~/.local/share/nvim/plugged/phpactor/bin/phpactor /usr/local/bin/phpactor
-    " sudo npm i -g typescript typescript-language-server
-    Plug 'neovim/nvim-lspconfig'
-
-    " :TSInstall php
-    " :TSInstall rust
-    " :TSInstall javascript
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-cmdline'
-    Plug 'hrsh7th/nvim-cmp'
-
-    Plug 'hrsh7th/cmp-vsnip'
-    Plug 'hrsh7th/vim-vsnip'
-
-    Plug 'phpactor/phpactor', {'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o'}
-
-    Plug 'nvim-lua/popup.nvim'
-    Plug 'ThePrimeagen/harpoon'
-
-    Plug 'tpope/vim-fugitive'
-call plug#end()
-
-set background=dark
-colorscheme gruvbox
-let g:netrw_banner=0
-
 augroup SNITOOL
     autocmd FileType php set colorcolumn=120
     autocmd FileType javascript set colorcolumn=80
@@ -93,6 +24,16 @@ let g:currentmode={
 set completeopt=menu,menuone,noselect
 
 lua <<EOF
+require('sets')
+require('plugins')
+vim.cmd [[
+    syntax on
+    filetype plugin on
+    set background=dark
+    colorscheme gruvbox
+    let g:netrw_banner=0
+]]
+
 function map(mode, shortcut, command)
   vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
@@ -110,7 +51,6 @@ function vmap(shortcut, command)
 end
 
 
-vim.g.mapleader = ' '
 nmap('<leader>lg', ':lua require("telescope.builtin").live_grep()<CR>')
 nmap('<leader>ff', ':lua require("telescope.builtin").git_files()<CR>')
 
