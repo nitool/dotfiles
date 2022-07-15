@@ -1,4 +1,3 @@
-lua <<EOF
 require('sets')
 require('plugins')
 require('maps')
@@ -122,5 +121,4 @@ for _, lsp in pairs(servers) do
     }
   }
 end
-EOF
 
