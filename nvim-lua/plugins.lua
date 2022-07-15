@@ -39,6 +39,8 @@ return require("packer").startup(function()
 
     use 'tpope/vim-fugitive'
 
+    use 'beauwilliams/statusline.lua'
+
     if packer_bootstrap then
       require('packer').sync()
     end

@@ -25,6 +25,7 @@ vim.opt.scrolloff = 8
 vim.opt.updatetime = 300
 vim.opt.shortmess:append('c')
 vim.opt.cursorline = true
+vim.opt.completeopt = 'menu,menuone,noselect'
 
 vim.g.mapleader = ' '
 
