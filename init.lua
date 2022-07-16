@@ -2,8 +2,6 @@ require('sets')
 require('plugins')
 require('maps')
 
-local statusline = require('statusline')
-
 vim.cmd([[
     augroup SNITOOL
         autocmd FileType php set colorcolumn=120
@@ -62,8 +60,6 @@ cmp.setup({
   }
 })
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
 require("harpoon").setup({
     global_settings = {
         save_on_toggle = false,
@@ -93,32 +89,6 @@ require("telescope").setup({
     }
 })
 
-local opts = { noremap=true, silent=true }
-local on_attach = function(client, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-end
-
-local servers = {
-    'rust_analyzer',
-    'intelephense',
-    'cssls',
-    'html',
-    'bashls',
-    'phpactor',
-    'tsserver'
-}
-
-for _, lsp in pairs(servers) do
-  require("lspconfig")[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  }
-end
+require('lsp')
+require('statusline')
 

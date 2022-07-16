@@ -70,3 +70,5 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/b
 generate_ps1
 
 . "$HOME/.cargo/env"
+-e 
+alias luamake=/home/snitool/Workspace/lua-language-server/3rd/luamake/luamake
