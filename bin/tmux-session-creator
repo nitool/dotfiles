@@ -2,6 +2,7 @@
 
 init_path=$1
 find_level=$2
+echo $find_level
 path=$(find ${init_path} -mindepth ${find_level} -maxdepth ${find_level} -type d | fzf)
 if [ -n $path ]; then
     new_session=$(tmux new-session -c ${path} -d -P)
