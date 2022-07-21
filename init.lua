@@ -78,6 +78,14 @@ require("telescope").setup({
         },
         live_grep = {
             theme = "ivy"
+        },
+        lsp_references = {
+            theme = "ivy",
+            show_line = false
+        },
+        lsp_definitions = {
+            theme = "ivy",
+            show_line = false
         }
     },
     defaults = {
