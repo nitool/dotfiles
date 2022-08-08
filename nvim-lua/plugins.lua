@@ -53,6 +53,8 @@ return require("packer").startup(function (use)
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
+    use 'windwp/nvim-projectconfig'
+
     if PACKER_BOOTSTRAP then
       require('packer').sync()
     end

@@ -97,6 +97,10 @@ require("telescope").setup({
     }
 })
 
+require('nvim-projectconfig').setup({
+  project_dir = "~/.config/nvim/Workspace/",
+})
+
 require('lsp')
 require('statusline')
 
