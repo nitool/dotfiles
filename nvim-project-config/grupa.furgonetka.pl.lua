@@ -20,11 +20,11 @@ function test_http(env, opts)
     local winid
 
     if opts.line1 ~= opts.line2 then
-        text = './tests/API-Requests/node_modules/.bin/http-requests-tester --verbose --client-file ' .. client_file .. ' --selected-client ' .. selected_client .. ' -- <<-EOF\n' .. text
+        text = './tests/API-Requests/node_modules/.bin/http-requests-tester --verbose --autolog-response --client-file ' .. client_file .. ' --selected-client ' .. selected_client .. ' -- <<-EOF\n' .. text
         winid = vim.api.nvim_open_win(bufnr, false, {relative='cursor', row=3, col=3, width=120, height=40})
     else
         vim.cmd('vsplit')
-        text = './tests/API-Requests/node_modules/.bin/http-requests-tester --verbose --client-file ' .. client_file .. ' --selected-client ' .. selected_client .. ' ' .. filename
+        text = './tests/API-Requests/node_modules/.bin/http-requests-tester --verbose --autolog-response --client-file ' .. client_file .. ' --selected-client ' .. selected_client .. ' ' .. filename
         winid = vim.api.nvim_get_current_win()
         vim.api.nvim_win_set_buf(winid, bufnr)
     end
