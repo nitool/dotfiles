@@ -1,6 +1,6 @@
 #!/bin/bash
 
-result=$(pactl list sinks | tr -d '\n' | grep -o -P '([0-9]+?)[.] odpływ.*?Opis: (.*?)Sterownik' | sed -E -s 's/([0-9]+?)[.] odpływ.*?Opis: (.*?)Sterownik/\1 \2/g' | fzf)
+result=$(pactl list sinks | tr -d '\n' | grep -o -P '(Sink|Odpływ).*?([0-9]+?).*?(sink|odpływ).*?(Description|Opis):(.*?)(Driver|Sterownik)' | sed -E -s 's/(Sink #|Odpływ)([0-9]+).*?(sink|odpływ).*?(Description|Opis):(.*?)(Driver|Sterownik)/\2 \5/g' | fzf)
 if [ -n "${result}" ]; then
     notify-send -t 15000 "Sound source changed to ${result}"
     pactl set-default-sink $(echo $result | awk '{print $1}')
