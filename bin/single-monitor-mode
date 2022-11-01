@@ -41,6 +41,7 @@ savestate() {
 
 getstate
 savestate
+onConnection
 
 xev -root -event randr | grep --line-buffered XRROutputChangeNotifyEvent | \
 while IFS= read -r line; do

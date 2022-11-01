@@ -10,6 +10,7 @@ path+="/snap/bin"
 path+="/usr/games"
 path+="$HOME/.local/bin"
 export PATH
+export DOCKER_HOST=unix:///run/user/1000/docker.sock
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'

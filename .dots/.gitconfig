@@ -1,3 +1,5 @@
 [user]
 	email = snitool@wp.pl
 	name = Sebastian Niecikowski
+[core]
+	editor = /home/snitool/.local/bin/nvim
