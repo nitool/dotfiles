@@ -1,22 +1,4 @@
-local ts_utils = require 'nvim-treesitter.ts_utils'
-
-local references_processors = {
-    php = require('references/php')
-}
-
-local function lsp_status()
-    local filetype = vim.api.nvim_buf_get_option(0, 'filetype');
-    if references_processors[filetype] == nil then
-        return nil
-    end
-
-    local node = ts_utils.get_node_at_cursor();
-    if node == nil then
-        return '';
-    end
-
-    return references_processors[filetype].get_reference(node);
-end
+local References = require('reference')
 
 require('lualine').setup({
     options = {
@@ -30,7 +12,7 @@ require('lualine').setup({
     },
     sections = {
         lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics', lsp_status},
+        lualine_b = {'branch', 'diff', 'diagnostics', References.get_reference},
         lualine_c = {function ()
             return vim.api.nvim_buf_get_name(0);
         end},
