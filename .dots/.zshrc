@@ -9,6 +9,7 @@ path+="/bin"
 path+="/snap/bin"
 path+="/usr/games"
 path+="$HOME/.local/bin"
+path+="$HOME/.local/go/bin"
 export PATH
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
 
