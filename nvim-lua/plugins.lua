@@ -16,6 +16,7 @@ end
 return require("packer").startup(function (use)
     use 'wbthomason/packer.nvim'
     use 'morhetz/gruvbox'
+    use 'Mofiqul/dracula.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'nvim-lua/lsp-status.nvim'
     use 'nvim-telescope/telescope.nvim'
