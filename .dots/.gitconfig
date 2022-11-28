@@ -1,5 +1,17 @@
+# https://github.com/dandavison/delta/releases
 [user]
 	email = snitool@wp.pl
 	name = Sebastian Niecikowski
+
 [core]
-	editor = /home/snitool/.local/bin/nvim
+	editor = nvim
+    pager = delta
+
+[delta]
+  line-numbers = true
+  side-by-side = true
+
+  file-modified-label = modified:
+
+[interactive]
+  diffFilter = delta --color-only
