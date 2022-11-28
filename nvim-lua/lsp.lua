@@ -18,7 +18,8 @@ local servers = {
     'html',
     'bashls',
     'phpactor',
-    'tsserver'
+    'tsserver',
+    'gopls'
 }
 
 for _, lsp in pairs(servers) do
