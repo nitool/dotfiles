@@ -1,3 +1,29 @@
+require('cmp').setup {
+    sources = {
+        { name = 'buffer' },
+        { name = 'nvim_lsp' },
+        { name = 'cmp_tabnine' }
+    },
+    formatting = {
+        format = function(entry, vim_item)
+            vim_item.menu = ({
+                buffer = "[Buffer]",
+                nvim_lsp = "[LSP]",
+                ultisnips = "[UltiSnips]",
+                nvim_lua = "[Lua]",
+                cmp_tabnine = "[TabNine]",
+                look = "[Look]",
+                path = "[Path]",
+                spell = "[Spell]",
+                calc = "[Calc]",
+                emoji = "[Emoji]"
+            })[entry.source.name]
+
+            return vim_item
+        end
+    }
+}
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 

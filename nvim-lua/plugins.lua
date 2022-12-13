@@ -38,6 +38,7 @@ return require("packer").startup(function (use)
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
+    use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
@@ -55,6 +56,7 @@ return require("packer").startup(function (use)
     }
 
     use 'windwp/nvim-projectconfig'
+
 
     if PACKER_BOOTSTRAP then
       require('packer').sync()
