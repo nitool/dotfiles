@@ -1,10 +1,11 @@
 # dotfiles
 
-## Requires
-  * Cinnamon WM
-  * vim-gnome (clipboard)
-  * tmux
-  
-## How to install
-Make sure you pass all requirements, then run `init.sh` script. 
+Wymaga:
+    - neovim
+    - tmux
+    - kitty.term
+    - zsh
+    - i3
 
+Po pobraniu należy uruchomić upload-dots.sh.
+W przyszłości przygotuję jakiś setup script doinstalowujący wszystkie wymagania.

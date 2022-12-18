@@ -17,6 +17,7 @@ end
 
 nmap('<leader>lg', ':lua require("telescope.builtin").live_grep()<CR>')
 nmap('<leader>ff', ':lua require("telescope.builtin").git_files()<CR>')
+nmap('<leader>sf', ':lua require("telescope.builtin").find_files()<CR>')
 
 nmap('<leader>ll', ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
 nmap('<leader>mf', ':lua require("harpoon.mark").add_file()<CR>')

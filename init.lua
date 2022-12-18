@@ -74,7 +74,9 @@ require("telescope").setup({
             theme = "ivy"
         },
         find_files = {
-            theme = "dropdown"
+            theme = "ivy",
+            no_ignore = true,
+            no_ignore_parent = true
         },
         live_grep = {
             theme = "ivy"
@@ -86,13 +88,6 @@ require("telescope").setup({
         lsp_definitions = {
             theme = "ivy",
             show_line = false
-        }
-    },
-    defaults = {
-        file_ignore_patterns = {
-            "node_modules",
-            "vendor/.*",
-            ".git/.*"
         }
     }
 })
