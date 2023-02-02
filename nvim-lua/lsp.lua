@@ -1,8 +1,8 @@
 require('cmp').setup {
     sources = {
-        { name = 'buffer' },
         { name = 'nvim_lsp' },
-        { name = 'cmp_tabnine' }
+        { name = 'cmp_tabnine' },
+        { name = 'buffer' }
     },
     formatting = {
         format = function(entry, vim_item)
