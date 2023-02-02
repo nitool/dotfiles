@@ -1,5 +1,5 @@
 local function map(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+  vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
 end
 
 local function nmap(shortcut, command)
@@ -22,6 +22,8 @@ nmap('<leader>gs', ':lua require("telescope.builtin").grep_string()<CR>')
 
 nmap('<leader>ll', ':lua require("harpoon.ui").toggle_quick_menu()<CR>')
 nmap('<leader>mf', ':lua require("harpoon.mark").add_file()<CR>')
+
+nmap('<leader>sd', vim.diagnostic.open_float)
 
 nmap('Y', 'yg$')
 nmap('n', 'nzzzv')

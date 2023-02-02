@@ -2,7 +2,6 @@
 
 echo "creating required directories"
 mkdir -p /home/$USER/.local/bin
-mkdir -p /home/$USER/.config/nvim
 mkdir -p /home/$USER/.vim/undodir
 
 echo "creating symlinks"
@@ -13,9 +12,7 @@ ls bin/ | xargs -n 1 -I{} ln -fs $(pwd)/bin/{} /home/$USER/.local/bin/{}
 echo "- i3"
 ln -fTs $(pwd)/.i3 /home/$USER/.i3
 echo "- nvim"
-ln -fs $(pwd)/init.lua /home/$USER/.config/nvim/init.lua
-ln -fs $(pwd)/nvim-lua /home/$USER/.config/nvim/lua
-ln -fs $(pwd)/nvim-project-config /home/$USER/.config/nvim/Workspace
+ln -fs $(pwd)/nvim-config /home/$USER/.config/nvim
 echo "- kitty"
 ln -fs $(pwd)/kitty.conf /home/$USER/.config/kitty/kitty.conf
 

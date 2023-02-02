@@ -96,7 +96,6 @@ require('nvim-projectconfig').setup({
   project_dir = "~/.config/nvim/Workspace/",
 })
 
-require('lsp')
 local References = require('reference')
 
 vim.api.nvim_create_user_command('GetCurrentReference', function (opts)
@@ -112,4 +111,6 @@ vim.api.nvim_create_user_command('GetFileReference', function (opts)
 end, {})
 
 require('statusline')
+
+require('Comment').setup()
 
