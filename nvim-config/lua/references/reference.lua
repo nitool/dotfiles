@@ -1,7 +1,7 @@
 local ts_utils = require 'nvim-treesitter.ts_utils'
 
 local references_processors = {
-    php = require('references/php')
+    php = require('references.languages.php')
 }
 
 local M = {}
@@ -25,3 +25,4 @@ M.get_file_reference = function ()
 end
 
 return M
+

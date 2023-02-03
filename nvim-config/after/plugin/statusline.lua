@@ -1,4 +1,4 @@
-local References = require('reference')
+local References = require('references.reference')
 
 require('lualine').setup({
     options = {

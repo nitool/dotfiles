@@ -10,7 +10,6 @@ lsp.ensure_installed({
     'bashls',
     'phpactor',
     'tsserver',
-    'gopls',
     'sumneko_lua'
 })
 
@@ -60,9 +59,8 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('n', '<leader>gr', function() vim.lsp.buf.references() end, opts)
     vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set('n', '<leader>ch', function() vim.lsp.buf.hover() end, opts)
+    vim.keymap.set('n', '<leader>sd', vim.diagnostic.open_float, opts)
 end)
-
-print("sadasd")
 
 lsp.setup()
 
