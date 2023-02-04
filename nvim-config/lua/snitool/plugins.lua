@@ -14,8 +14,8 @@ return require("packer").startup(function (use)
     use 'tpope/vim-fugitive'
     use 'numToStr/Comment.nvim'
 
-    use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
-    use('nvim-treesitter/playground')
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use 'nvim-treesitter/playground'
 
     use {
       'VonHeikemen/lsp-zero.nvim',
@@ -48,5 +48,7 @@ return require("packer").startup(function (use)
     }
 
     use 'windwp/nvim-projectconfig'
+
+    use { 'tzachar/cmp-tabnine', run = './install.sh' }
 end)
 
