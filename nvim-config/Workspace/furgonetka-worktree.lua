@@ -25,7 +25,6 @@ function test_http(env, opts)
     else
         vim.cmd('vsplit')
         text = './tests/API-Requests/node_modules/.bin/http-requests-tester --verbose --autolog-response --client-file ' .. client_file .. ' --selected-client ' .. selected_client .. ' ' .. filename
-        print(text)
         winid = vim.api.nvim_get_current_win()
         vim.api.nvim_win_set_buf(winid, bufnr)
     end
@@ -123,12 +122,14 @@ vim.api.nvim_create_user_command('StanTestCurrent', function (opts)
     })
 end, { range = true })
 
+print("test")
 local Worktree = require("git-worktree")
-
 Worktree.on_tree_change(function(op, metadata)
+    print(op)
   if op == Worktree.Operations.Switch then
     print("Switched from " .. metadata.prev_path .. " to " .. metadata.path)
-    vim.fn.jobstart('ln -fs ' .. metadata.path .. ' /home/$USER/Workspace/grupa.furgonetka.pl')
+    print('executing ls -A . | xargs -I{} ln -fTs ' .. metadata.path .. '/{} /home/$USER/Workspace/grupa.furgonetka.pl/{}')
+    vim.fn.jobstart('ls -A . | xargs -I{} ln -fTs ' .. metadata.path .. '/{} /home/$USER/Workspace/grupa.furgonetka.pl/{}')
   end
 end)
 
