@@ -33,6 +33,8 @@ plugins=(
   git
 )
 
+mkdir -p $HOME/.docs
+
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 
@@ -40,3 +42,5 @@ alias gfp="git fetch ; git pull"
 alias gadd="git add ."
 alias gcm="git commit -m"
 alias gss="git status -s"
+
+alias note='nvim $HOME/.docs/$(date +"%Y%m%d").txt'
