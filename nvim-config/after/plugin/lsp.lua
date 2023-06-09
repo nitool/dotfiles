@@ -24,6 +24,17 @@ lsp.configure('sumneko_lua', {
     }
 })
 
+lsp.configure('tsserver', {
+    filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx"
+    }
+})
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -39,8 +50,7 @@ lsp.setup_nvim_cmp({
     {name = 'path'},
     {name = 'nvim_lsp', keyword_length = 3},
     {name = 'buffer', keyword_length = 3},
-    {name = 'luasnip', keyword_length = 2},
-    {name = 'cmp_tabnine', keyword_length = 3}
+    {name = 'luasnip', keyword_length = 2}
   }
 })
 

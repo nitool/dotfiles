@@ -49,8 +49,6 @@ return require("packer").startup(function (use)
 
     use 'windwp/nvim-projectconfig'
 
-    use { 'tzachar/cmp-tabnine', run = './install.sh' }
-
     use { 'ThePrimeagen/git-worktree.nvim' }
 end)
 
