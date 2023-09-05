@@ -10,11 +10,11 @@ lsp.ensure_installed({
     'bashls',
     'phpactor',
     'tsserver',
-    'sumneko_lua'
+    'lua_ls'
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('sumneko_lua', {
+lsp.configure('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {
