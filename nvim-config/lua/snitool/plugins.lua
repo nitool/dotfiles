@@ -49,6 +49,6 @@ return require("packer").startup(function (use)
 
     use 'windwp/nvim-projectconfig'
 
-    use { 'ThePrimeagen/git-worktree.nvim' }
+    use { 'airblade/vim-gitgutter' }
 end)
 
