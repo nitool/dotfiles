@@ -13,7 +13,7 @@ function test_http(env, opts)
         selected_client = 'devel'
     else
         client_file = './tests/API-Requests/rest-client.env.json'
-        selected_client = 'rest_api_test'
+        selected_client = 'rest_api_sandbox'
     end
 
     local bufnr = vim.api.nvim_create_buf(false, true)
