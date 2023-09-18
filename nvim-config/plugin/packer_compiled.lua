@@ -114,11 +114,6 @@ _G.packer_plugins = {
     path = "/home/snitool/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
-  ["git-worktree.nvim"] = {
-    loaded = true,
-    path = "/home/snitool/.local/share/nvim/site/pack/packer/start/git-worktree.nvim",
-    url = "https://github.com/ThePrimeagen/git-worktree.nvim"
-  },
   harpoon = {
     loaded = true,
     path = "/home/snitool/.local/share/nvim/site/pack/packer/start/harpoon",
@@ -175,6 +170,11 @@ _G.packer_plugins = {
     path = "/home/snitool/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["papercolor-theme"] = {
+    loaded = true,
+    path = "/home/snitool/.local/share/nvim/site/pack/packer/start/papercolor-theme",
+    url = "https://github.com/NLKNguyen/papercolor-theme"
+  },
   phpactor = {
     loaded = true,
     path = "/home/snitool/.local/share/nvim/site/pack/packer/start/phpactor",
@@ -195,11 +195,6 @@ _G.packer_plugins = {
     path = "/home/snitool/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["tokyonight.nvim"] = {
-    loaded = true,
-    path = "/home/snitool/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
-  },
   undotree = {
     loaded = true,
     path = "/home/snitool/.local/share/nvim/site/pack/packer/start/undotree",
@@ -209,6 +204,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/snitool/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-gitgutter"] = {
+    loaded = true,
+    path = "/home/snitool/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
+    url = "https://github.com/airblade/vim-gitgutter"
   }
 }
 
