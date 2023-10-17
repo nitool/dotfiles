@@ -44,3 +44,10 @@ alias gcm="git commit -m"
 alias gss="git status -s"
 
 alias note='nvim $HOME/.docs/$(date +"%Y%m%d").txt'
+export DEFAULT_USER=$USER
+
+
+# BEGIN SNIPPET: OVHcloud Web PaaS CLI configuration
+HOME=${HOME:-$(echo '/home/'$USER)}
+export PATH="$HOME/"'.webpaas-cli/bin':"$PATH"
+if [ -f "$HOME/"'.webpaas-cli/shell-config.rc' ]; then . "$HOME/"'.webpaas-cli/shell-config.rc'; fi # END SNIPPET
