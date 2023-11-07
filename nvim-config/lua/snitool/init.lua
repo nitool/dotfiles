@@ -15,7 +15,9 @@ vim.cmd [[
     syntax on
     filetype plugin on
     set background=light
-    colorscheme PaperColor
+    let g:everforest_background = 'soft'
+    let g:everforest_better_performance = 1
+    colorscheme everforest
     let g:netrw_banner=0
 ]]
 
