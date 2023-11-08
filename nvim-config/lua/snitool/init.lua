@@ -14,10 +14,8 @@ vim.cmd([[
 vim.cmd [[
     syntax on
     filetype plugin on
-    set background=light
-    let g:everforest_background = 'soft'
-    let g:everforest_better_performance = 1
-    colorscheme everforest
+    set background=dark
+    colorscheme gruvbox
     let g:netrw_banner=0
 ]]
 
