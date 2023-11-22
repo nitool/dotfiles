@@ -10,7 +10,9 @@ lsp.ensure_installed({
     'bashls',
     'phpactor',
     'tsserver',
-    'lua_ls'
+    'lua_ls',
+    'php-cs-fixer',
+    'prettier'
 })
 
 -- Fix Undefined global 'vim'
@@ -36,22 +38,22 @@ lsp.configure('tsserver', {
 })
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<Enter>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
+    ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<Enter>'] = cmp.mapping.confirm({ select = true }),
+    ["<C-Space>"] = cmp.mapping.complete(),
 })
 
 lsp.setup_nvim_cmp({
-  mapping = cmp_mappings,
-  sources = {
-    {name = 'path'},
-    {name = 'nvim_lsp', keyword_length = 3},
-    {name = 'buffer', keyword_length = 3},
-    {name = 'luasnip', keyword_length = 2}
-  }
+    mapping = cmp_mappings,
+    sources = {
+        { name = 'path' },
+        { name = 'nvim_lsp', keyword_length = 3 },
+        { name = 'buffer', keyword_length = 3 },
+        { name = 'luasnip', keyword_length = 2 }
+    }
 })
 
 lsp.set_preferences({
@@ -65,12 +67,13 @@ lsp.set_preferences({
 })
 
 lsp.on_attach(function(client, bufnr)
-    local opts = {buffer = bufnr, remap = false}
+    local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set('n', '<leader>gd', function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set('n', '<leader>gr', function() vim.lsp.buf.references() end, opts)
     vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
+    vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format() end, opts)
     vim.keymap.set('n', '<leader>ch', function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set('n', '<leader>sd', vim.diagnostic.open_float, opts)
 end)
@@ -80,4 +83,3 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
-
