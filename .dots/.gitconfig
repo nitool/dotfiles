@@ -6,6 +6,7 @@
 [core]
 	editor = nvim
     pager = delta
+	excludesFile = ~/.global_ignore
 
 [delta]
   line-numbers = true
