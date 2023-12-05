@@ -12,7 +12,6 @@ lsp.ensure_installed({
     'tsserver',
     'lua_ls',
     'php-cs-fixer',
-    'prettier'
 })
 
 -- Fix Undefined global 'vim'
