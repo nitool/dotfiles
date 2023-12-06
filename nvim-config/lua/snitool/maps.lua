@@ -6,6 +6,7 @@ vim.keymap.set('n', 'J', 'mzJ`z', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tn', ':tabnext<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tp', ':tabprev<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<leader>tt', ':tabnew<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F1>', ':Telescope help_tags<CR>', { noremap = true, silent = true })
 
 vim.keymap.set('i', ',', ',<c-g>u', { noremap = true, silent = true })
 vim.keymap.set('i', '.', '.<c-g>u', { noremap = true, silent = true })
