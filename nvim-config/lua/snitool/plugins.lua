@@ -50,5 +50,12 @@ return require("packer").startup(function (use)
     use 'windwp/nvim-projectconfig'
 
     use { 'airblade/vim-gitgutter' }
+
+    use {
+        'akinsho/flutter-tools.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+        },
+    }
 end)
 

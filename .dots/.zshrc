@@ -10,6 +10,7 @@ path+="/snap/bin"
 path+="/usr/games"
 path+="$HOME/.local/bin"
 path+="$HOME/.local/go/bin"
+path+="$HOME/.local/flutter/bin"
 export PATH
 export DOCKER_HOST=unix:///run/user/1000/docker.sock
 
