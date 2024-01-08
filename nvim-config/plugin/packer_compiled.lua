@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "/home/snitool/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/home/snitool/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
+  },
   ["flutter-tools.nvim"] = {
     loaded = true,
     path = "/home/snitool/.local/share/nvim/site/pack/packer/start/flutter-tools.nvim",
