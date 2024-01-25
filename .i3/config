@@ -126,6 +126,7 @@ bindsym $mod+Shift+r restart
 
 # takes screenshot
 bindsym $mod+Shift+e exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+bindsym $mod+Shift+f exec --no-startup-id maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
