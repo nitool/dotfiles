@@ -5,7 +5,7 @@ return require("packer").startup(function (use)
     use 'morhetz/gruvbox'
 
     use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.0',
+      'nvim-telescope/telescope.nvim', tag = '0.1.5',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
 
@@ -59,5 +59,18 @@ return require("packer").startup(function (use)
     }
 
     use 'github/copilot.vim'
+
+    use {
+      "kndndrj/nvim-dbee",
+      requires = {
+        "MunifTanjim/nui.nvim",
+      },
+      run = function()
+        require("dbee").install()
+      end,
+      config = function()
+        require("dbee").setup()
+      end
+    }
 end)
 
