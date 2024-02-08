@@ -44,6 +44,8 @@ alias gadd="git add ."
 alias gcm="git commit -m"
 alias gss="git status -s"
 
+alias ssh="kitty +kitten ssh"
+
 alias note='nvim $HOME/.docs/$(date +"%Y%m%d").txt'
 export DEFAULT_USER=$USER
 
