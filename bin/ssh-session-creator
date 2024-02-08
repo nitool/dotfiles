@@ -1,0 +1,15 @@
+#!/bin/bash
+
+init_path=$1
+find_level=$2
+echo $find_level
+path=$(grep "Host " ~/.ssh/config | tr -s ' ' | cut -d ' ' -f 2 | fzf)
+if [ -n $path ]; then
+    new_session=$(tmux new-session -d -P ssh ${path})
+    if [ -z $TMUX ]; then
+        tmux attach-session -t "${new_session}"
+    else
+        tmux switch -t "${new_session}"
+    fi
+fi
+
