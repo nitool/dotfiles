@@ -77,6 +77,8 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format() end, opts)
     vim.keymap.set('n', '<leader>ch', function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set('n', '<leader>sd', vim.diagnostic.open_float, opts)
+
+    vim.lsp.inlay_hints.enable(0, not vim.lsp.inlay_hints.is_enabled());
 end)
 
 lsp.setup()
