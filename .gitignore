@@ -1,3 +1,5 @@
 .idea/
 nvim-config/plugin/*
 nvim-config/plugin
+nvim-config/Workspace/*
+!nvim-config/Workspace/.keep

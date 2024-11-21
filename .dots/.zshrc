@@ -47,6 +47,7 @@ alias gss="git status -s"
 alias ssh="kitty +kitten ssh"
 
 alias note='nvim $HOME/.docs/$(date +"%Y%m%d").txt'
+alias timesheet='libreoffice ~/Dokumenty/timesheet.ods'
 export DEFAULT_USER=$USER
 
 
