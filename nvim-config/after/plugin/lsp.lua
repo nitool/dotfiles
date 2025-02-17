@@ -9,7 +9,6 @@ lsp.ensure_installed({
     'html',
     'bashls',
     'phpactor',
-    'tsserver',
     'lua_ls',
 })
 
