@@ -24,7 +24,7 @@ alias tmux-session-creator="tmux-session-creator /home/$USER/Workspace 1"
 alias relxrdb="xrdb -merge ~/.Xresources"
 alias screenshot="gnome-screenshot -acf /tmp/test && cat /tmp/test | xclip -i -selection clipboard -target image/png"
 
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 alias luamake=/home/snitool/Workspace/lua-language-server/3rd/luamake/luamake
 
