@@ -15,7 +15,9 @@ echo "- nvim"
 ln -fs $(pwd)/nvim-config /home/$USER/.config/nvim
 echo "- kitty"
 ln -fs $(pwd)/kitty.conf /home/$USER/.config/kitty/kitty.conf
+echo "- zed"
+ln -fs $(pwd)/zed/keymap.json /home/$USER/.config/zed/keymap.json
+ln -fs $(pwd)/zed/settings.json /home/$USER/.config/zed/settings.json
 
 echo "reloading bash config"
 source /home/$USER/.bashrc
-

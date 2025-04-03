@@ -1,0 +1,43 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      // "j k": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "ProjectSearchBar > Editor",
+    "bindings": {
+      "shift-tab": "search::PreviousHistoryQuery",
+      "tab": "search::NextHistoryQuery"
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "shift-tab": "editor::ContextMenuPrevious",
+      "tab": "editor::ContextMenuNext"
+    }
+  },
+  {
+    "context": "Picker > Editor",
+    "bindings": {
+      "shift-tab": "menu::SelectPrevious",
+      "tab": "menu::SelectNext",
+      "alt-enter": "picker::ConfirmCompletion"
+    }
+  }
+]
