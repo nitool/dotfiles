@@ -15,7 +15,7 @@ vim.cmd [[
     syntax on
     filetype plugin on
     set background=dark
-    colorscheme vscode
+    colorscheme gruvbox
     let g:netrw_banner=0
 ]]
 
