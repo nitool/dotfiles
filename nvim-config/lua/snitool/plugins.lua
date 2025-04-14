@@ -47,8 +47,6 @@ return require("packer").startup(function (use)
       }
     }
 
-    use { 'phpactor/phpactor', tag = '*', run = 'composer install --no-dev -o'}
-
     use {
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -66,18 +64,5 @@ return require("packer").startup(function (use)
     }
 
     use 'github/copilot.vim'
-
-    use {
-      "kndndrj/nvim-dbee",
-      requires = {
-        "MunifTanjim/nui.nvim",
-      },
-      run = function()
-        require("dbee").install()
-      end,
-      config = function()
-        require("dbee").setup()
-      end
-    }
 end)
 
