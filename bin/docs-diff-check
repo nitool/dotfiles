@@ -1,5 +1,27 @@
 #!/usr/bin/env bash
 
+#
+# Sprawdzanie dokumentacji API przewoźników.
+#
+# TODO lista:
+# [x] Allegro
+# [x] AmbroExpress
+# [ ] DeliGoo
+# [x] DHL
+# [ ] DHL Express
+# [x] DPD
+# [ ] Empik
+# [ ] FedEx
+# [ ] GLS
+# [ ] InPost
+# [ ] Meest
+# [x] Orlen
+# [x] Poczta
+# [ ] Postivo
+# [ ] Speedmail
+# [ ] SPX
+# [ ] UPS
+
 date=$(date '+%Y%m%d%H%M%S')
 case=$1
 cache=~/.docs/$case
@@ -127,6 +149,21 @@ case $case in
         ' > /tmp/allegronews
 
         compare_txt '/tmp/allegronews'
+
+        ;;
+
+    ambroexpress)
+
+        compare_html 'https://ambroexpress.pl/pliki-do-pobrania'
+
+        curl -b ${cookie_file} -c ${cookie_file} -s "https://ambroexpress.pl/pliki-do-pobrania" \
+            | grep -o -P "\/static\/upload.*?DokumentacjaAPI.*?[0-9]\.pdf" \
+            | head -n 1 \
+            | xargs -I{} wget --load-cookies ${cookie_file} -q -O /tmp/ambroexpressapi.pdf https://ambroexpress.pl{} && pdftotext -q /tmp/ambroexpressapi.pdf /tmp/ambroexpressapi.txt
+
+        compare_txt "/tmp/ambroexpressapi.txt"
+
+        rm /tmp/ambroexpressapi.pdf
 
         ;;
 
@@ -278,10 +315,22 @@ case $case in
 
     *)
         $0 allegro
+        $0 ambroexpress
+        # $0 deligoo
         $0 dhl
+        # $0 dhlexpress
         $0 dpd
-        $0 poczta
+        # $0 empik
+        # $0 fedex
+        # $0 gls
+        # $0 inpost
+        # $0 meest
         $0 orlen
+        $0 poczta
+        # $0 postivo
+        # $0 speedmail
+        # $0 spx
+        # $0 ups
 
         ;;
 esac
