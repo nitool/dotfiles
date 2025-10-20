@@ -13,7 +13,7 @@
 # [ ] Empik
 # [x] FedEx
 # [ ] GLS
-# [ ] InPost
+# [x] InPost
 # [ ] Meest
 # [x] Orlen
 # [x] Poczta
@@ -290,6 +290,37 @@ case $case in
 
         ;;
 
+    inpost)
+
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/plugins/recently-updated/changes.action?theme=sidebar&startIndex=15&searchToken=1&spaceKeys=PL&contentType=page&cursor=_t_WzE3NTk0ODM2NDEwMDAsIlx0MzUyMjIzNTAxIDk8NDFgP2htSWlKQ25iPUxFLDVKIGNwIl0%3D_h_W10%3D"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/11730958/PL+Dokumentacja+us+ugi+Paczka+w+Weekend"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/11731040/Dokumentacja+API+ShipX"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/11731042/Us+ugi"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/11731043/Walidacja+formularzy"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/11731045/Zlecenie+odbioru+Zamawianie+kuriera"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/11731046/Przesy+ka"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/11731047/Spos+b+nadania"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/11731048/Miejsce+powstania+koszt+w+MPK"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/11731050/Tracking+przesy+ki"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/11731054/Organizacja"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/11731055/Autoryzacja+Kolekcje+zapyta"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/11731056/Statusy"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/11731074/Raport+COD"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/130351113/Autoryzacja+i+wymagania+techniczne"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/18153470/Zas+b+Points+Paczkomat+PaczkoPunkty"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/18153630/Webhooki"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/352223501/Order"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/40206337/Proces+integracji+z+us+ugami+InPost"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/451084324/InPost+International+API+Documentation+0.2"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/451903492/InPost+Integration+FAQ"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/45744192/Prezentowanie+punkt+w+odbioru"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/52428808/FAQ"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/622754/API+ShipX"
+        compare_html "https://dokumentacja-inpost.atlassian.net/wiki/spaces/PL/pages/839974914/International"
+
+        ;;
+
     poczta)
         curl -b ${cookie_file} -c ${cookie_file} -s "https://e-nadawca.poczta-polska.pl" > /dev/null
 
@@ -335,7 +366,7 @@ case $case in
         # $0 empik
         $0 fedex
         # $0 gls
-        # $0 inpost
+        $0 inpost
         # $0 meest
         $0 orlen
         $0 poczta
