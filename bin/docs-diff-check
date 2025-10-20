@@ -11,7 +11,7 @@
 # [ ] DHL Express
 # [x] DPD
 # [ ] Empik
-# [ ] FedEx
+# [x] FedEx
 # [ ] GLS
 # [ ] InPost
 # [ ] Meest
@@ -278,6 +278,18 @@ case $case in
 
         ;;
 
+    fedex)
+
+        compare_json 'https://developer.fedex.com/api/etc/services/fetchislands.jsonp?data=%7B%22tagPage%22%3A%22irc%3ATop-Group%22%2C%22tagParentPath%22%3A%22%2Fcontent%2Ffedex-com%2Firc%2Fsites%2Fpl%2Fpl_pl%2Fcatalog%22%2C%22type%22%3A%22catalog%22%2C%22fullfeed%22%3Atrue%7D'
+        compare_html 'https://developer.fedex.com/api/pl-pl/catalog/ship/v1/docs.html'
+        compare_json 'https://developer.fedex.com/wirc/json/api_groups/Ship/Shipment-Resource.json'
+        compare_html 'https://developer.fedex.com/api/pl-pl/catalog/postal-code/v1/docs.html#operation/Validate%20Postal'
+        compare_json 'https://developer.fedex.com/wirc/json/api_groups/CountryAPI/ValidatePostal-Resource.json'
+        compare_html 'https://developer.fedex.com/api/pl-pl/catalog/pickup/v1/docs.html'
+        compare_json 'https://developer.fedex.com/wirc/json/api_groups/Pickup/Pickup-Resource.json'
+
+        ;;
+
     poczta)
         curl -b ${cookie_file} -c ${cookie_file} -s "https://e-nadawca.poczta-polska.pl" > /dev/null
 
@@ -321,7 +333,7 @@ case $case in
         # $0 dhlexpress
         $0 dpd
         # $0 empik
-        # $0 fedex
+        $0 fedex
         # $0 gls
         # $0 inpost
         # $0 meest
