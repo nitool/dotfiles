@@ -20,7 +20,7 @@
 # [ ] Postivo
 # [ ] Speedmail
 # [ ] SPX
-# [ ] UPS
+# [x] UPS
 
 date=$(date '+%Y%m%d%H%M%S')
 case=$1
@@ -98,7 +98,7 @@ compare_strict () {
     new="$cache/${sum}new"
     prev="$cache/${sum}prev"
 
-    curl -b ${cookie_file} -c ${cookie_file} -s "${link}" > $tmp
+    curl -b ${cookie_file} -c ${cookie_file} -s "${link}" > $new
 
     if [ -e $prev ]; then
         diff=$(diff ${diff_args} $prev $new)
@@ -356,6 +356,27 @@ case $case in
 
         ;;
 
+    ups)
+
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/AddressValidation.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/DangerousGoods.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/LandedCost.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/Locator.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/OAuthAuthCode.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/OAuthClientCredentials.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/Paperless.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/Pickup.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/PreNotification.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/QuantumView.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/Rating.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/Shipping.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/TradeDirect.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/TimeInTransit.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/Tracking.yaml'
+        compare_strict 'https://raw.githubusercontent.com/UPS-API/api-documentation/refs/heads/main/WorldEaseShipmentManagement.yaml'
+
+        ;;
+
     *)
         $0 allegro
         $0 ambroexpress
@@ -373,7 +394,7 @@ case $case in
         # $0 postivo
         # $0 speedmail
         # $0 spx
-        # $0 ups
+        $0 ups
 
         ;;
 esac
