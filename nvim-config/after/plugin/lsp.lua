@@ -24,11 +24,23 @@ local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
     mapping = {
-        ['<S-Tab>']   = cmp.mapping.select_prev_item(cmp_select),
-        ['<Tab>']     = cmp.mapping.select_next_item(cmp_select),
-        ['<CR>']      = cmp.mapping.confirm({ select = true }),
+        ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<Tab>']   = cmp.mapping.select_next_item(cmp_select),
+
+        ['<CR>'] = cmp.mapping(function(fallback)
+            if cmp.visible() and cmp.get_active_entry() then
+                cmp.confirm({
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    select = false,
+                })
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
+
         ['<C-Space>'] = cmp.mapping.complete(),
     },
+
     sources = {
         { name = 'path' },
         { name = 'nvim_lsp', keyword_length = 3 },
@@ -43,6 +55,12 @@ cmp.setup({
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+if capabilities.textDocument
+    and capabilities.textDocument.completion
+    and capabilities.textDocument.completion.completionItem then
+    capabilities.textDocument.completion.completionItem.snippetSupport = false
+end
 
 local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
 for type, icon in pairs(signs) do
