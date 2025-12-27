@@ -54,6 +54,7 @@ export DEFAULT_USER=$USER
 # BEGIN SNIPPET: OVHcloud Web PaaS CLI configuration
 HOME=${HOME:-$(echo '/home/'$USER)}
 export PATH="$HOME/"'.webpaas-cli/bin':"$PATH"
+export PATH="$HOME/flutter/flutter/bin":$PATH
 if [ -f "$HOME/"'.webpaas-cli/shell-config.rc' ]; then . "$HOME/"'.webpaas-cli/shell-config.rc'; fi # END SNIPPET
 
 # Created by Zap installer
