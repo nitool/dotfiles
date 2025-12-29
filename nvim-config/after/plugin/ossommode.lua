@@ -8,6 +8,6 @@ vim.api.nvim_create_autocmd("InsertCharPre", {
 
       vim.schedule(function()
           OssomMode.ossom_draw()
-      end, 5)
+      end)
   end,
 })
