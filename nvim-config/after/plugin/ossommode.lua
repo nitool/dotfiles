@@ -6,8 +6,9 @@ vim.api.nvim_create_autocmd("InsertCharPre", {
           return
       end
 
-      vim.schedule(function()
-          OssomMode.ossom_draw()
-      end)
+      -- Psuje autocomplete
+      -- vim.schedule(function()
+      --     OssomMode.ossom_draw()
+      -- end)
   end,
 })
