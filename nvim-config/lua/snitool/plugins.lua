@@ -62,6 +62,4 @@ return require("packer").startup(function (use)
             'neovim/nvim-lspconfig',
         },
     }
-
-    use 'github/copilot.vim'
 end)
