@@ -68,3 +68,6 @@ plug "zsh-users/zsh-syntax-highlighting"
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
+
+[[ -f ~/Workspace/grupa.furgonetka.pl.worktrees/completions.zsh ]] && \
+    source ~/Workspace/grupa.furgonetka.pl.worktrees/completions.zsh
