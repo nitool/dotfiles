@@ -9,7 +9,7 @@ if [[ "$dirname" == "grupa.furgonetka.pl.branches" || "$dirname" == "microservic
     path=$(find "${path}" -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 if [ -n $path ]; then
-    new_session=$(tmux new-session -c ${path} -d -P)
+    new_session=$(tmux new-session -c ${path} -s "${dirname}" -d -P)
     if [ -z $TMUX ]; then
         tmux attach-session -t "${new_session}"
     else
