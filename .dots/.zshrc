@@ -38,6 +38,8 @@ mkdir -p $HOME/.docs
 
 export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
+PROMPT='%{%f%b%k%}$(build_prompt)
+$ '
 
 alias gfp="git fetch ; git pull"
 alias gadd="git add ."
@@ -70,3 +72,6 @@ compinit
 
 # opencode
 export PATH=/home/snitool/.opencode/bin:$PATH
+
+[[ -f ~/Workspace/grupa.furgonetka.pl.worktrees/completions.zsh ]] && \
+    source ~/Workspace/grupa.furgonetka.pl.worktrees/completions.zsh

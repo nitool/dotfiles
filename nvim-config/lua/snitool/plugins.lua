@@ -62,4 +62,13 @@ return require("packer").startup(function (use)
             'neovim/nvim-lspconfig',
         },
     }
+
+    use {
+        'MeanderingProgrammer/render-markdown.nvim',
+        after = { 'nvim-treesitter' },
+        requires = { 'nvim-mini/mini.nvim', opt = true },
+        config = function()
+            require('render-markdown').setup({})
+        end,
+    }
 end)
