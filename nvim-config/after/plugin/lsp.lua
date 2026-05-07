@@ -12,7 +12,8 @@ local servers = {
     "phpactor",
     "lua_ls",
     "ts_ls",
-    "pyright"
+    "pyright",
+    "gopls"
 }
 
 mason_lspconfig.setup({
