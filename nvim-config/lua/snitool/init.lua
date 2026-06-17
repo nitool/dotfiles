@@ -14,7 +14,7 @@ vim.cmd([[
 vim.cmd [[
     syntax on
     filetype plugin on
-    set background=dark
+    set background=light
     colorscheme gruvbox
     let g:netrw_banner=0
 ]]
