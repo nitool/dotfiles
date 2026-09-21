@@ -15,7 +15,11 @@ vim.cmd [[
     syntax on
     filetype plugin on
     set background=light
-    colorscheme gruvbox
     let g:netrw_banner=0
 ]]
+
+-- NOTE: don't use `:colorscheme achroma` — colors/achroma.lua in the plugin
+-- hardcodes `set background=dark` before calling setup(), which would
+-- override this. Calling setup() directly does everything colorscheme would.
+require('achroma').setup({ mode = 'light' })
 
