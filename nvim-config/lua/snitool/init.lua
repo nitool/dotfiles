@@ -18,8 +18,5 @@ vim.cmd [[
     let g:netrw_banner=0
 ]]
 
--- NOTE: don't use `:colorscheme achroma` — colors/achroma.lua in the plugin
--- hardcodes `set background=dark` before calling setup(), which would
--- override this. Calling setup() directly does everything colorscheme would.
-require('achroma').setup({ mode = 'light' })
-
+require('catppuccin').setup({ flavour = 'latte' })
+vim.cmd.colorscheme('catppuccin')
