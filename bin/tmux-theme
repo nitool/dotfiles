@@ -1,0 +1,40 @@
+#!/bin/bash
+
+schema=org.gnome.desktop.interface
+key=color-scheme
+pidfile="${XDG_RUNTIME_DIR:-/tmp}/tmux-theme.pid"
+
+apply() {
+    if [[ "$1" == *prefer-dark* ]]; then
+        tmux set -g status-style "bg=#313244,fg=#cdd6f4"
+        tmux set -g window-status-current-style "bg=#cba6f7,fg=#11111b,bold"
+        tmux set -g window-status-style "bg=#313244,fg=#cdd6f4"
+        tmux set -g message-style "bg=#1e1e2e,fg=#cdd6f4"
+    else
+        tmux set -g status-style "bg=#ccd0da,fg=#4c4f69"
+        tmux set -g window-status-current-style "bg=#8839ef,fg=#eff1f5,bold"
+        tmux set -g window-status-style "bg=#ccd0da,fg=#4c4f69"
+        tmux set -g message-style "bg=#eff1f5,fg=#4c4f69"
+    fi
+}
+
+case "$1" in
+    apply)
+        apply "$(gsettings get $schema $key)"
+        ;;
+    watch)
+        if [[ -f "$pidfile" ]] && kill -0 "$(cat "$pidfile")" 2>/dev/null; then
+            kill "$(cat "$pidfile")"
+        fi
+        echo $$ > "$pidfile"
+        server_pid=$(tmux display-message -p '#{pid}')
+        while read -r line; do
+            kill -0 "$server_pid" 2>/dev/null || exit 0
+            apply "$line"
+        done < <(gsettings monitor $schema $key)
+        ;;
+    *)
+        echo "usage: tmux-theme apply|watch" >&2
+        exit 1
+        ;;
+esac

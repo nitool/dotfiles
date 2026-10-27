@@ -15,6 +15,7 @@ echo "- nvim"
 ln -fs $(pwd)/nvim-config /home/$USER/.config/nvim
 echo "- kitty"
 ln -fs $(pwd)/kitty.conf /home/$USER/.config/kitty/kitty.conf
+ls kitty-themes/ | xargs -I{} ln -fs $(pwd)/kitty-themes/{} /home/$USER/.config/kitty/{}
 
 echo "reloading bash config"
 source /home/$USER/.bashrc

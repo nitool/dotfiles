@@ -14,9 +14,9 @@ vim.cmd([[
 vim.cmd [[
     syntax on
     filetype plugin on
-    set background=light
     let g:netrw_banner=0
 ]]
 
-require('catppuccin').setup({ flavour = 'latte' })
+require('snitool.theme')
+require('catppuccin').setup({ background = { light = 'latte', dark = 'mocha' } })
 vim.cmd.colorscheme('catppuccin')
