@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+if [[ $# -ne 1 ]]; then
+  printf 'Użycie: %s nazwa-pliku\n' "${0##*/}" >&2
+  exit 1
+fi
+
+output="${1%.pdf}.pdf"
+base_name="${output%.pdf}"
+
+if [[ -z "$base_name" ]]; then
+  printf 'Podaj nazwę pliku.\n' >&2
+  exit 1
+fi
+
+mapfile -t scanner_lines < <(scanimage -L)
+scanners=()
+
+for line in "${scanner_lines[@]}"; do
+  if [[ $line == *\`*\'* ]]; then
+    scanners+=("$line")
+  fi
+done
+
+if [[ ${#scanners[@]} -eq 0 ]]; then
+  printf 'Nie znaleziono skanerów.\n' >&2
+  exit 1
+fi
+
+if ! scanner_line=$(printf '%s\n' "${scanners[@]}" | fzf --prompt='Wybierz skaner: '); then
+  exit 0
+fi
+
+scanner="${scanner_line#*\`}"
+scanner="${scanner%%\'*}"
+
+scan_files=()
+number=1
+
+while :; do
+  page_file="${base_name}_${number}.pdf"
+
+  if [[ -e "$page_file" ]]; then
+    printf 'Plik już istnieje: %s\n' "$page_file" >&2
+    exit 1
+  fi
+
+  while :; do
+    printf 'Skanowanie strony %d do %s...\n' "$number" "$page_file"
+    if scanimage --device-name="$scanner" --format=pdf > "$page_file"; then
+      break
+    fi
+
+    rm -f -- "$page_file"
+    while :; do
+      read -r -p 'Skanowanie nie powiodło się. Ponowić? [Y/n] ' answer
+      case "${answer,,}" in
+        '' | y) break ;;
+        n) exit 1 ;;
+        *) printf 'Wpisz y lub n.\n' >&2 ;;
+      esac
+    done
+  done
+
+  scan_files+=("$page_file")
+  ((number++))
+
+  while :; do
+    read -r -p 'Skanować kolejną stronę? [Y/n] ' answer
+    case "${answer,,}" in
+      '' | y) break ;;
+      n) break 2 ;;
+      *) printf 'Wpisz y lub n.\n' >&2 ;;
+    esac
+  done
+done
+
+if [[ ${#scan_files[@]} -eq 1 ]]; then
+  if [[ -e "$output" ]]; then
+    printf 'Plik już istnieje: %s\n' "$output" >&2
+    exit 1
+  fi
+  mv -- "${scan_files[0]}" "$output"
+  exit 0
+fi
+
+while :; do
+  read -r -p "Scalić strony do ${output}? [y/N] " answer
+  case "${answer,,}" in
+    y)
+      if [[ -e "$output" ]]; then
+        printf 'Plik już istnieje: %s\n' "$output" >&2
+        exit 1
+      fi
+      pdfunite "${scan_files[@]}" "$output"
+      break
+      ;;
+    '' | n) exit 0 ;;
+    *) printf 'Wpisz y lub n.\n' >&2 ;;
+  esac
+done

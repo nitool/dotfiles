@@ -12,11 +12,10 @@ ls bin/ | xargs -n 1 -I{} ln -fs $(pwd)/bin/{} /home/$USER/.local/bin/{}
 echo "- i3"
 ln -fTs $(pwd)/.i3 /home/$USER/.i3
 echo "- nvim"
-ln -fs $(pwd)/nvim-config /home/$USER/.config/nvim
+ln -fTs $(pwd)/nvim-config /home/$USER/.config/nvim
 echo "- kitty"
 ln -fs $(pwd)/kitty.conf /home/$USER/.config/kitty/kitty.conf
 ls kitty-themes/ | xargs -I{} ln -fs $(pwd)/kitty-themes/{} /home/$USER/.config/kitty/{}
 
 echo "reloading bash config"
 source /home/$USER/.bashrc
-
